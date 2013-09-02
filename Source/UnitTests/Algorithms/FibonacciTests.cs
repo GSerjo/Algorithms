@@ -25,5 +25,12 @@ namespace UnitTests.Algorithms
             int result = Fibonacci.For2(4);
             Assert.Equal(3, result);
         }
+
+        [Fact]
+        public void For3()
+        {
+            int result = Fibonacci.For3(4);
+            Assert.Equal(3, result);
+        }
     }
 }
