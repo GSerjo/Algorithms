@@ -18,6 +18,22 @@ namespace Algorithms
             return list;
         }
 
+        public static List<int> Merge(IEnumerable<int> list)
+        {
+            var queue = new Queue<List<int>>();
+            foreach (int value in list)
+            {
+                queue.Enqueue(new List<int> { value });
+            }
+            while (queue.Count > 1)
+            {
+                List<int> merge = MergeCore(queue.Dequeue(), queue.Dequeue());
+                queue.Enqueue(merge);
+            }
+            return queue.Dequeue();
+        }
+
+
         public static List<int> Selection(List<int> list)
         {
             for (int i = 0; i < list.Count; i++)
@@ -33,6 +49,37 @@ namespace Algorithms
                 Swap(list, i, min);
             }
             return list;
+        }
+
+        private static List<int> MergeCore(List<int> first, List<int> second)
+        {
+            int firstIndex = 0;
+            int secondIndex = 0;
+            var result = new List<int>();
+            while (firstIndex < first.Count && secondIndex < second.Count)
+            {
+                if (first[firstIndex] < second[secondIndex])
+                {
+                    result.Add(first[firstIndex]);
+                    firstIndex++;
+                }
+                else
+                {
+                    result.Add(second[secondIndex]);
+                    secondIndex++;
+                }
+            }
+            if (firstIndex == first.Count)
+            {
+                second.RemoveRange(0, secondIndex);
+                result.AddRange(second);
+            }
+            else
+            {
+                first.RemoveRange(0, firstIndex);
+                result.AddRange(first);
+            }
+            return result;
         }
 
         private static void Swap(IList<int> list, int first, int second)
