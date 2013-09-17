@@ -34,6 +34,17 @@ namespace Algorithms
         }
 
 
+        public static void Quick(List<int> list, int start, int end)
+        {
+            if (start >= end)
+            {
+                return;
+            }
+            int pivot = Partition(list, start, end);
+            Quick(list, start, pivot - 1);
+            Quick(list, pivot + 1, end);
+        }
+
         public static List<int> Selection(List<int> list)
         {
             for (int i = 0; i < list.Count; i++)
@@ -80,6 +91,26 @@ namespace Algorithms
                 result.AddRange(first);
             }
             return result;
+        }
+
+        private static int Partition(IList<int> list, int start, int end)
+        {
+            int i = start;
+            int p = end == list.Count ? end - 1 : end;
+            for (int j = start; j < end; j++)
+            {
+                if (list[j] < list[p])
+                {
+                    Swap(list, j, i);
+                    i++;
+                }
+            }
+            if (end == list.Count)
+            {
+                return i;
+            }
+            Swap(list, end, i);
+            return i;
         }
 
         private static void Swap(IList<int> list, int first, int second)
