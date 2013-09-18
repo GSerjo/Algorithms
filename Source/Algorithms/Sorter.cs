@@ -115,6 +115,10 @@ namespace Algorithms
 
         private static void Swap(IList<int> list, int first, int second)
         {
+            if (first == second)
+            {
+                return;
+            }
             int dummy = list[first];
             list[first] = list[second];
             list[second] = dummy;
