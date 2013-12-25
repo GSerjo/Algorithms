@@ -1,6 +1,8 @@
-﻿namespace Algorithms.DataStructures
+﻿using System;
+
+namespace Algorithms.DataStructures
 {
-    public class StackStructure<T>
+    public sealed class StackStructure<T>
     {
         private readonly Node<T> _head = new Node<T>();
 
@@ -9,7 +11,7 @@
             Node<T> node = _head.Next;
             if (node == null)
             {
-                return default(T);
+                throw new IndexOutOfRangeException();
             }
             _head.Next = node.Next;
             return node.Data;
