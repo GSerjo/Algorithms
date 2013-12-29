@@ -46,7 +46,9 @@
   <ItemGroup>
     <Compile Include="Algorithms\FibonacciTests.cs" />
     <Compile Include="Algorithms\SorterTests.cs" />
+    <Compile Include="DataStructures\LinkedListStructureTest.cs" />
     <Compile Include="DataStructures\StackStructureTest.cs" />
+    <Compile Include="ForTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
