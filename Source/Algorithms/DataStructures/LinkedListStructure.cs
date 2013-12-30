@@ -22,6 +22,15 @@ namespace Algorithms.DataStructures
             return this;
         }
 
+        public LinkedListStructure<T> AddLast(T value)
+        {
+            var node = new Node<T> { Value = value };
+            Node<T> previousNode = _tail.Next;
+            previousNode.Next = node;
+            _tail.Next = node;
+            return this;
+        }
+
         public override string ToString()
         {
             var builder = new StringBuilder("{");
