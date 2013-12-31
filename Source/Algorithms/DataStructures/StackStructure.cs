@@ -14,19 +14,19 @@ namespace Algorithms.DataStructures
                 throw new IndexOutOfRangeException();
             }
             _head.Next = node.Next;
-            return node.Data;
+            return node.Value;
         }
 
         public void Push(T data)
         {
-            var node = new Node<T> { Data = data, Next = _head.Next };
+            var node = new Node<T> { Value = data, Next = _head.Next };
             _head.Next = node;
         }
 
-        private sealed class Node<TData>
+        private sealed class Node<TValue>
         {
-            public TData Data { get; set; }
-            public Node<TData> Next { get; set; }
+            public TValue Value { get; set; }
+            public Node<TValue> Next { get; set; }
         }
     }
 }

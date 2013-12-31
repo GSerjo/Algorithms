@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using Algorithms.DataStructures;
 using Xunit;
 
@@ -77,6 +80,25 @@ namespace UnitTests.DataStructures
                 .AddFirst(2);
             bool contains = linkedList.Contains(1);
             Assert.True(contains);
+        }
+
+        [Fact]
+        public void PerformanceTest()
+        {
+            List<int> data = Enumerable.Range(0, 10000000).ToList();
+            var originalLinkedList = new LinkedList<int>();
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            data.ForEach(x => originalLinkedList.AddFirst(x));
+            originalLinkedList.Contains(500036);
+            stopwatch.Stop();
+            Console.WriteLine("Original LinkedList {0} ms", stopwatch.Elapsed.TotalMilliseconds);
+
+            var myLinkedListStructure = new LinkedListStructure<int>();
+            stopwatch = Stopwatch.StartNew();
+            data.ForEach(x => myLinkedListStructure.AddFirst(x));
+            myLinkedListStructure.Contains(500036);
+            stopwatch.Stop();
+            Console.WriteLine("My LinkedList {0} ms", stopwatch.Elapsed.TotalMilliseconds);
         }
     }
 }
