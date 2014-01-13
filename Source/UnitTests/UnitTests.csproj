@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Algorithms\FibonacciTests.cs" />
     <Compile Include="Algorithms\SorterTests.cs" />
+    <Compile Include="DataStructures\DoublyLinkedListStructureTest.cs" />
     <Compile Include="DataStructures\LinkedListStructureTest.cs" />
     <Compile Include="DataStructures\StackStructureTest.cs" />
     <Compile Include="ForTest.cs" />

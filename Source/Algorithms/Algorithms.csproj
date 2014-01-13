@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStructures\DoublyLinkedListStructure.cs" />
     <Compile Include="DataStructures\LinkedListStructure.cs" />
     <Compile Include="DataStructures\StackStructure.cs" />
     <Compile Include="Fibonacci.cs" />
