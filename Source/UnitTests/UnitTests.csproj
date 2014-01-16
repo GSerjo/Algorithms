@@ -49,6 +49,7 @@
     <Compile Include="Algorithms\SorterTests.cs" />
     <Compile Include="DataStructures\DoublyLinkedListStructureTest.cs" />
     <Compile Include="DataStructures\LinkedListStructureTest.cs" />
+    <Compile Include="DataStructures\StackStructureArrayTest.cs" />
     <Compile Include="DataStructures\StackStructureTest.cs" />
     <Compile Include="ForTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -5,14 +5,14 @@ namespace Algorithms.DataStructures
     public sealed class DoublyLinkedListStructure<T>
     {
         private readonly Node<T> _head = new Node<T>();
-        private Node<T> _tail = new Node<T>();
+        private readonly Node<T> _tail = new Node<T>();
         public int Count { get; private set; }
 
         public DoublyLinkedListStructure<T> AddFirst(T value)
         {
             Node<T> next = _head.Next;
-            var node = new Node<T> { Value = value, Next = next};
-            
+            var node = new Node<T> { Value = value, Next = next };
+
             Count++;
             if (Count == 1)
             {
