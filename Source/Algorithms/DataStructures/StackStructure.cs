@@ -4,11 +4,11 @@ namespace Algorithms.DataStructures
 {
     public sealed class StackStructure<T>
     {
-        private readonly Node<T> _head = new Node<T>();
+        private readonly Node _head = new Node();
 
         public T Pop()
         {
-            Node<T> node = _head.Next;
+            Node node = _head.Next;
             if (node == null)
             {
                 throw new IndexOutOfRangeException();
@@ -19,14 +19,14 @@ namespace Algorithms.DataStructures
 
         public void Push(T data)
         {
-            var node = new Node<T> { Value = data, Next = _head.Next };
+            var node = new Node { Value = data, Next = _head.Next };
             _head.Next = node;
         }
 
-        private sealed class Node<TValue>
+        private sealed class Node
         {
-            public TValue Value { get; set; }
-            public Node<TValue> Next { get; set; }
+            public Node Next { get; set; }
+            public T Value { get; set; }
         }
     }
 }

@@ -7,8 +7,8 @@ namespace Algorithms.DataStructures
 {
     public sealed class LinkedListStructure<T> : ICollection<T>
     {
-        private readonly Node<T> _head = new Node<T>();
-        private readonly Node<T> _tail = new Node<T>();
+        private readonly Node _head = new Node();
+        private readonly Node _tail = new Node();
 
         public int Count { get; private set; }
 
@@ -19,7 +19,7 @@ namespace Algorithms.DataStructures
 
         public LinkedListStructure<T> AddFirst(T value)
         {
-            var node = new Node<T> { Value = value, Next = _head.Next };
+            var node = new Node { Value = value, Next = _head.Next };
             Count++;
             if (Count == 1)
             {
@@ -31,7 +31,7 @@ namespace Algorithms.DataStructures
 
         public LinkedListStructure<T> AddLast(T value)
         {
-            var node = new Node<T> { Value = value };
+            var node = new Node { Value = value };
             Count++;
             if (Count == 1)
             {
@@ -47,7 +47,7 @@ namespace Algorithms.DataStructures
         public override string ToString()
         {
             var builder = new StringBuilder("{");
-            Node<T> node = _head.Next;
+            Node node = _head.Next;
             while (node != null)
             {
                 builder.AppendFormat("{0};", node.Value);
@@ -71,7 +71,7 @@ namespace Algorithms.DataStructures
 
         public bool Contains(T item)
         {
-            Node<T> node = _head.Next;
+            Node node = _head.Next;
             while (node != null)
             {
                 if (node.Value.Equals(item))
@@ -100,7 +100,7 @@ namespace Algorithms.DataStructures
 
         public IEnumerator<T> GetEnumerator()
         {
-            Node<T> node = _head.Next;
+            Node node = _head.Next;
             while (node.Next != null)
             {
                 yield return node.Value;
@@ -108,10 +108,10 @@ namespace Algorithms.DataStructures
             }
         }
 
-        private sealed class Node<TValue>
+        private sealed class Node
         {
-            public Node<TValue> Next { get; set; }
-            public TValue Value { get; set; }
+            public Node Next { get; set; }
+            public T Value { get; set; }
         }
     }
 }
