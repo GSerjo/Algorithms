@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Algorithms\FibonacciTests.cs" />
     <Compile Include="Algorithms\SorterTests.cs" />
+    <Compile Include="DataStructures\CircularLinkedListStructureTest.cs" />
     <Compile Include="DataStructures\DoublyLinkedListStructureTest.cs" />
     <Compile Include="DataStructures\LinkedListStructureTest.cs" />
     <Compile Include="DataStructures\StackStructureArrayTest.cs" />
