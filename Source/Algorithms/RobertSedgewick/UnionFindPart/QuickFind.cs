@@ -6,6 +6,11 @@
         {
         }
 
+        protected override int GetIndexCore(int data)
+        {
+            return Indexes[data];
+        }
+
         protected override void UnionCore(int first, int second)
         {
             int firstIndex = GetIndex(first);

@@ -25,8 +25,10 @@
 
         protected int GetIndex(int data)
         {
-            return Indexes[data];
+            return GetIndexCore(data);
         }
+
+        protected abstract int GetIndexCore(int data);
 
         protected abstract void UnionCore(int first, int second);
     }
