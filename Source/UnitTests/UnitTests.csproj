@@ -60,6 +60,7 @@
     <Compile Include="RobertSedgewick\UnionFindPart\QuickFindTest.cs" />
     <Compile Include="RobertSedgewick\UnionFindPart\QuickUnionTest.cs" />
     <Compile Include="RobertSedgewick\UnionFindPart\UnionFindTest.cs" />
+    <Compile Include="RobertSedgewick\UnionFindPart\WeightedQuickUnionTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

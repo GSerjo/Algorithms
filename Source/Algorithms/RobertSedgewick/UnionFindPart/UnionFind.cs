@@ -15,7 +15,7 @@
 
         public bool Connected(int first, int second)
         {
-            return Indexes[first] == Indexes[second];
+            return GetIndex(first) == GetIndex(second);
         }
 
         public void Union(int first, int second)

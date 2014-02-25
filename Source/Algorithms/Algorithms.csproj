@@ -49,6 +49,7 @@
     <Compile Include="RobertSedgewick\UnionFindPart\QuickFind.cs" />
     <Compile Include="RobertSedgewick\UnionFindPart\QuickUnion.cs" />
     <Compile Include="RobertSedgewick\UnionFindPart\UnionFind.cs" />
+    <Compile Include="RobertSedgewick\UnionFindPart\WeightedQuickUnion.cs" />
     <Compile Include="Sorter.cs" />
   </ItemGroup>
   <ItemGroup />
