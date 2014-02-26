@@ -46,6 +46,7 @@
     <Compile Include="DataStructures\StackStructureArray.cs" />
     <Compile Include="Fibonacci.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RobertSedgewick\Analysis\TwoSum.cs" />
     <Compile Include="RobertSedgewick\UnionFindPart\QuickFind.cs" />
     <Compile Include="RobertSedgewick\UnionFindPart\QuickUnion.cs" />
     <Compile Include="RobertSedgewick\UnionFindPart\UnionFind.cs" />
