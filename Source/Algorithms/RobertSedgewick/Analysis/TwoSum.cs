@@ -4,8 +4,24 @@ using System.Linq;
 
 namespace Algorithms.RobertSedgewick.Analysis
 {
-    public sealed class TwoSum
+    public static class TwoSum
     {
+        public static int Quick(string sourceDataPath)
+        {
+            int result = 0;
+            List<int> source = Data(sourceDataPath);
+            source.Sort();
+            for (int i = 0; i < source.Count; i++)
+            {
+                int searchValue = -source[i];
+                if (source.BinarySearch(searchValue) > i)
+                {
+                    result++;
+                }
+            }
+            return result;
+        }
+
         public static int Slow(string sourceDataPath)
         {
             int result = 0;
