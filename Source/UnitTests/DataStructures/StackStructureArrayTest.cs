@@ -23,7 +23,7 @@ namespace UnitTests.DataStructures
             var stack = new StackStructureArray<int>();
             stack.Push(1)
                  .Push(2);
-            var result = stack.ToString();
+            string result = stack.ToString();
             Assert.Equal("{2;1;}", result);
         }
     }
