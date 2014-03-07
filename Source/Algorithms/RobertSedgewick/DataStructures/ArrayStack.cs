@@ -7,6 +7,11 @@ namespace Algorithms.RobertSedgewick.DataStructures
         private int _capacity;
         private TItem[] _data = new TItem[1];
 
+        public int Count
+        {
+            get { return _capacity; }
+        }
+
         public bool IsEmpty
         {
             get { return _capacity == 0; }
@@ -35,7 +40,7 @@ namespace Algorithms.RobertSedgewick.DataStructures
         private void Resize(int length)
         {
             var newArray = new TItem[length];
-            Array.Copy(_data, newArray, _data.Length);
+            Array.Copy(_data, newArray, _capacity);
             _data = newArray;
         }
     }
