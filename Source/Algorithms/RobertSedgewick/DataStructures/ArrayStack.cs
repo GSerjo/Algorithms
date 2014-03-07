@@ -5,7 +5,12 @@ namespace Algorithms.RobertSedgewick.DataStructures
     public sealed class ArrayStack<TItem>
     {
         private int _capacity;
-        private TItem[] _data = new TItem[4];
+        private TItem[] _data = new TItem[1];
+
+        public bool IsEmpty
+        {
+            get { return _capacity == 0; }
+        }
 
         public TItem Pop()
         {
