@@ -48,6 +48,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RobertSedgewick\Analysis\TwoSum.cs" />
     <Compile Include="RobertSedgewick\DataStructures\ArrayStack.cs" />
+    <Compile Include="RobertSedgewick\DataStructures\LinkedListStack.cs" />
     <Compile Include="RobertSedgewick\UnionFindPart\QuickFind.cs" />
     <Compile Include="RobertSedgewick\UnionFindPart\QuickUnion.cs" />
     <Compile Include="RobertSedgewick\UnionFindPart\UnionFind.cs" />
