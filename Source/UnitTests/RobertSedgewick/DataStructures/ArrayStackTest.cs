@@ -22,7 +22,7 @@ namespace UnitTests.RobertSedgewick.DataStructures
         }
 
         [Fact]
-        public void Count_PushIntoNewStack_CountIncreased()
+        public void Count_PushIntoStack_CountIncreased()
         {
             var stack = new ArrayStack<int>();
 
@@ -41,7 +41,7 @@ namespace UnitTests.RobertSedgewick.DataStructures
         }
 
         [Fact]
-        public void Pop_NewStack_CorrectOrder()
+        public void Pop_IntoStack_CorrectOrder()
         {
             var stack = new ArrayStack<int>();
             stack.Push(0);
