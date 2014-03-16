@@ -10,6 +10,10 @@ namespace Algorithms.RobertSedgewick.Analysis
             source.Sort();
             for (int i = 0; i < source.Count; i++)
             {
+                if (source[i] > 0)
+                {
+                    return result;
+                }
                 int searchValue = -source[i];
                 if (source.BinarySearch(searchValue) > i)
                 {
