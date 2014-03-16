@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Algorithms.RobertSedgewick.Analysis
+namespace Algorithms.RobertSedgewick.Fundamentals.Analysis
 {
     public static class TwoSum
     {

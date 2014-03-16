@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Algorithms.RobertSedgewick.UnionFindPart;
+using Algorithms.RobertSedgewick.Fundamentals.UnionFindPart;
 using Xunit;
 
-namespace UnitTests.RobertSedgewick.UnionFindPart
+namespace UnitTests.RobertSedgewick.Fundamentals.UnionFindPart
 {
     public sealed class WeightedQuickUnionTest : UnionFindTest
     {

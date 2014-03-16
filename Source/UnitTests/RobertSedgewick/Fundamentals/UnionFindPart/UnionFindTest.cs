@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace UnitTests.RobertSedgewick.UnionFindPart
+namespace UnitTests.RobertSedgewick.Fundamentals.UnionFindPart
 {
     public abstract class UnionFindTest
     {

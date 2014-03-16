@@ -1,7 +1,7 @@
-﻿using Algorithms.RobertSedgewick.DataStructures;
+﻿using Algorithms.RobertSedgewick.Fundamentals.DataStructures;
 using Xunit;
 
-namespace UnitTests.RobertSedgewick.DataStructures
+namespace UnitTests.RobertSedgewick.Fundamentals.DataStructures
 {
     public sealed class LinkedListStackTest
     {

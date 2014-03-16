@@ -4,11 +4,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
-using Algorithms.RobertSedgewick.Analysis;
+using Algorithms.RobertSedgewick.Fundamentals.Analysis;
 using Xunit;
 using Xunit.Extensions;
 
-namespace UnitTests.RobertSedgewick.Analysis
+namespace UnitTests.RobertSedgewick.Fundamentals.Analysis
 {
     public sealed class TwoSumTest
     {

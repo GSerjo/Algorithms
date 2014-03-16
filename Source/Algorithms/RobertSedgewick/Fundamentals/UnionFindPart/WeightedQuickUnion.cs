@@ -1,4 +1,4 @@
-﻿namespace Algorithms.RobertSedgewick.UnionFindPart
+﻿namespace Algorithms.RobertSedgewick.Fundamentals.UnionFindPart
 {
     public sealed class WeightedQuickUnion : UnionFind
     {

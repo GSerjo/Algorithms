@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Algorithms.RobertSedgewick.DataStructures
+namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
 {
     public sealed class LinkedListStack<TItem>
     {
