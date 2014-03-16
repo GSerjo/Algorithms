@@ -59,6 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RobertSedgewick\Analysis\TwoSumTest.cs" />
     <Compile Include="RobertSedgewick\DataStructures\ArrayStackTest.cs" />
+    <Compile Include="RobertSedgewick\DataStructures\LinkedListQueueTest.cs" />
     <Compile Include="RobertSedgewick\DataStructures\LinkedListStackTest.cs" />
     <Compile Include="RobertSedgewick\UnionFindPart\QuickFindTest.cs" />
     <Compile Include="RobertSedgewick\UnionFindPart\QuickUnionTest.cs" />
