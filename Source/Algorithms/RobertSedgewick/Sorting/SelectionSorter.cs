@@ -9,7 +9,7 @@ namespace Algorithms.RobertSedgewick.Sorting
             for (int i = 0; i < value.Length; i++)
             {
                 int min = i;
-                for (int j = 0; j < value.Length; j++)
+                for (int j = i + 1; j < value.Length; j++)
                 {
                     if (Less(value[j], value[min]))
                     {

@@ -4,7 +4,7 @@ namespace Algorithms.RobertSedgewick.Sorting
 {
     public abstract class Sorter
     {
-        public bool IsSorted(IComparable[] value)
+        public static bool IsSorted(IComparable[] value)
         {
             for (int i = 1; i < value.Length; i++)
             {
