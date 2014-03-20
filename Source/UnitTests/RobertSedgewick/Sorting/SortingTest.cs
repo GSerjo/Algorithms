@@ -21,5 +21,13 @@ namespace UnitTests.RobertSedgewick.Sorting
             SelectionSorter.Sort(array);
             Assert.True(Sorter.IsSorted(array));
         }
+
+        [Fact]
+        public void ShellSorter_Sort()
+        {
+            var array = new IComparable[] { 2, 0, 3, 4, 6, 5 };
+            ShellSorter.Sort(array);
+            Assert.True(Sorter.IsSorted(array));
+        }
     }
 }

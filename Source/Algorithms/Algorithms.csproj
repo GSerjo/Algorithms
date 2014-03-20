@@ -56,6 +56,7 @@
     <Compile Include="RobertSedgewick\Fundamentals\UnionFindPart\WeightedQuickUnion.cs" />
     <Compile Include="RobertSedgewick\Sorting\InsertionSorter.cs" />
     <Compile Include="RobertSedgewick\Sorting\SelectionSorter.cs" />
+    <Compile Include="RobertSedgewick\Sorting\ShellSorter.cs" />
     <Compile Include="RobertSedgewick\Sorting\Sorter.cs" />
     <Compile Include="Sorter.cs" />
   </ItemGroup>
