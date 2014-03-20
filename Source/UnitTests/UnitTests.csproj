@@ -65,8 +65,7 @@
     <Compile Include="RobertSedgewick\Fundamentals\UnionFindPart\QuickUnionTest.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\UnionFindPart\UnionFindTest.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\UnionFindPart\WeightedQuickUnionTest.cs" />
-    <Compile Include="RobertSedgewick\Sorting\InsertionSorterTest.cs" />
-    <Compile Include="RobertSedgewick\Sorting\SelectionSorterTest.cs" />
+    <Compile Include="RobertSedgewick\Sorting\SortingTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
