@@ -4,7 +4,7 @@ namespace Algorithms.RobertSedgewick.Sorting
 {
     public sealed class ShellSorter : Sorter
     {
-        public static void Sort(IComparable[] value)
+        public static IComparable[] Sort(IComparable[] value)
         {
             int h = 1;
             while (h < value.Length/3)
@@ -25,6 +25,7 @@ namespace Algorithms.RobertSedgewick.Sorting
                 }
                 h = h/3;
             }
+            return value;
         }
     }
 }

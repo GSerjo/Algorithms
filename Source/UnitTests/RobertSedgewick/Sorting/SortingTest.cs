@@ -10,24 +10,32 @@ namespace UnitTests.RobertSedgewick.Sorting
         public void InsertionSorter_Sort()
         {
             var array = new IComparable[] { 2, 0, 3, 4, 6, 5 };
-            InsertionSorter.Sort(array);
-            Assert.True(Sorter.IsSorted(array));
+            IComparable[] result = InsertionSorter.Sort(array);
+            Assert.True(Sorter.IsSorted(result));
+        }
+
+        [Fact]
+        public void MergeSorter_Sort()
+        {
+            var array = new IComparable[] { 2, 0, 3, 4, 6, 5 };
+            IComparable[] result = MergeSorter.Sort(array);
+            Assert.True(Sorter.IsSorted(result));
         }
 
         [Fact]
         public void SelectionSorter_Sort()
         {
             var array = new IComparable[] { 2, 0, 3, 4, 6, 5 };
-            SelectionSorter.Sort(array);
-            Assert.True(Sorter.IsSorted(array));
+            IComparable[] result = SelectionSorter.Sort(array);
+            Assert.True(Sorter.IsSorted(result));
         }
 
         [Fact]
         public void ShellSorter_Sort()
         {
             var array = new IComparable[] { 2, 0, 3, 4, 6, 5 };
-            ShellSorter.Sort(array);
-            Assert.True(Sorter.IsSorted(array));
+            IComparable[] result = ShellSorter.Sort(array);
+            Assert.True(Sorter.IsSorted(result));
         }
     }
 }

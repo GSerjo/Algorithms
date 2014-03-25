@@ -4,7 +4,7 @@ namespace Algorithms.RobertSedgewick.Sorting
 {
     public sealed class SelectionSorter : Sorter
     {
-        public static void Sort(IComparable[] value)
+        public static IComparable[] Sort(IComparable[] value)
         {
             for (int i = 0; i < value.Length; i++)
             {
@@ -18,6 +18,7 @@ namespace Algorithms.RobertSedgewick.Sorting
                 }
                 Exchange(value, i, min);
             }
+            return value;
         }
     }
 }
