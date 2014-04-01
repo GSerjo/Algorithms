@@ -6,28 +6,39 @@ namespace Algorithms.RobertSedgewick.Sorting
     {
         public static IComparable[] Sort(IComparable[] value)
         {
-            Sort(value, 0, value.Length);
+            Sort(value, 0, value.Length - 1);
             return value;
         }
 
         private static int Partition(IComparable[] value, int start, int end)
         {
             int i = start;
-            int hi = value.Length == end ? end - 1 : end;
-            for (int j = i; j < hi; j++)
+            int j = end + 1;
+            IComparable partitionItem = value[start];
+            while (true)
             {
-                if (Less(value[j], value[hi]))
+                while (Less(value[++i], partitionItem))
                 {
-                    Exchange(value, j, hi);
-                    i++;
+                    if (i == end)
+                    {
+                        break;
+                    }
                 }
+                while (Less(partitionItem, value[--j]))
+                {
+                    if (j == start)
+                    {
+                        break;
+                    }
+                }
+                if (i >= j)
+                {
+                    break;
+                }
+                Exchange(value, i, j);
             }
-            if (end == value.Length)
-            {
-                return i;
-            }
-            Exchange(value, end, i);
-            return i;
+            Exchange(value, start, j);
+            return j;
         }
 
         private static void Sort(IComparable[] value, int start, int end)
