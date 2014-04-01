@@ -4,7 +4,8 @@ namespace Algorithms.RobertSedgewick.Sorting
 {
     public sealed class InsertionSorter : Sorter
     {
-        public static IComparable[] Sort(IComparable[] value)
+        public static T[] Sort<T>(T[] value)
+            where T : IComparable
         {
             for (int i = 1; i < value.Length; i++)
             {

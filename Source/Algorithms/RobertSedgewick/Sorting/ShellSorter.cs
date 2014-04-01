@@ -4,12 +4,13 @@ namespace Algorithms.RobertSedgewick.Sorting
 {
     public sealed class ShellSorter : Sorter
     {
-        public static IComparable[] Sort(IComparable[] value)
+        public static T[] Sort<T>(T[] value)
+            where T : IComparable
         {
             int h = 1;
-            while (h < value.Length/3)
+            while (h < value.Length / 3)
             {
-                h = h*3 + 1;
+                h = h * 3 + 1;
             }
             while (h >= 1)
             {
@@ -23,7 +24,7 @@ namespace Algorithms.RobertSedgewick.Sorting
                         }
                     }
                 }
-                h = h/3;
+                h = h / 3;
             }
             return value;
         }

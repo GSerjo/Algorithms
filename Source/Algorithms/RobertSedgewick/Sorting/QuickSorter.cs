@@ -4,13 +4,15 @@ namespace Algorithms.RobertSedgewick.Sorting
 {
     public sealed class QuickSorter : Sorter
     {
-        public static IComparable[] Sort(IComparable[] value)
+        public static T[] Sort<T>(T[] value)
+            where T : IComparable
         {
             Sort(value, 0, value.Length - 1);
             return value;
         }
 
-        private static int Partition(IComparable[] value, int start, int end)
+        private static int Partition<T>(T[] value, int start, int end)
+            where T : IComparable
         {
             int i = start;
             int j = end + 1;
@@ -41,7 +43,8 @@ namespace Algorithms.RobertSedgewick.Sorting
             return j;
         }
 
-        private static void Sort(IComparable[] value, int start, int end)
+        private static void Sort<T>(T[] value, int start, int end)
+            where T : IComparable
         {
             if (start >= end)
             {

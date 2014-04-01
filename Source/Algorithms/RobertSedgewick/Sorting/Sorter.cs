@@ -4,7 +4,8 @@ namespace Algorithms.RobertSedgewick.Sorting
 {
     public abstract class Sorter
     {
-        public static bool IsSorted(IComparable[] value)
+        public static bool IsSorted<T>(T[] value)
+            where T : IComparable
         {
             for (int i = 1; i < value.Length; i++)
             {
@@ -16,14 +17,16 @@ namespace Algorithms.RobertSedgewick.Sorting
             return true;
         }
 
-        protected static void Exchange(IComparable[] value, int i, int j)
+        protected static void Exchange<T>(T[] value, int i, int j)
+            where T : IComparable
         {
-            IComparable temp = value[i];
+            T temp = value[i];
             value[i] = value[j];
             value[j] = temp;
         }
 
-        protected static bool Less(IComparable left, IComparable right)
+        protected static bool Less<T>(T left, T right)
+            where T : IComparable
         {
             return left.CompareTo(right) < 0;
         }
