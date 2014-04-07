@@ -16,7 +16,7 @@ namespace Algorithms.RobertSedgewick.Sorting
         {
             int i = start;
             int j = end + 1;
-            IComparable partitionItem = value[start];
+            T partitionItem = value[start];
             while (true)
             {
                 while (Less(value[++i], partitionItem))
