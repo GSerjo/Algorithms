@@ -8,22 +8,22 @@
 
         protected override int GetIndexCore(int data)
         {
-            return Indexes[data];
+            return Id[data];
         }
 
-        protected override void UnionCore(int first, int second)
+        protected override void UnionCore(int p, int q)
         {
-            int firstIndex = GetIndex(first);
-            int secondIndex = GetIndex(second);
-            if (firstIndex == secondIndex)
+            int pId = GetIndex(p);
+            int qId = GetIndex(q);
+            if (pId == qId)
             {
                 return;
             }
-            for (int i = 0; i < Indexes.Length; i++)
+            for (int i = 0; i < Id.Length; i++)
             {
-                if (Indexes[i] == firstIndex)
+                if (Id[i] == pId)
                 {
-                    Indexes[i] = secondIndex;
+                    Id[i] = qId;
                 }
             }
         }

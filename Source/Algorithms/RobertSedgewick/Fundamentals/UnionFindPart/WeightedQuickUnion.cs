@@ -1,4 +1,6 @@
-﻿namespace Algorithms.RobertSedgewick.Fundamentals.UnionFindPart
+﻿using System;
+
+namespace Algorithms.RobertSedgewick.Fundamentals.UnionFindPart
 {
     public sealed class WeightedQuickUnion : UnionFind
     {
@@ -13,27 +15,47 @@
             }
         }
 
+        public int Depth(int p)
+        {
+            int result = 0;
+            while (p != Id[p])
+            {
+                p = Id[p];
+                result++;
+            }
+            return result;
+        }
+
+        public void SetId(int[] value)
+        {
+            if (value.Length != Id.Length)
+            {
+                throw new InvalidOperationException();
+            }
+            Id = value;
+        }
+
         protected override int GetIndexCore(int data)
         {
-            while (data != Indexes[data])
+            while (data != Id[data])
             {
-                data = Indexes[data];
+                data = Id[data];
             }
             return data;
         }
 
-        protected override void UnionCore(int first, int second)
+        protected override void UnionCore(int p, int q)
         {
-            int firstRoot = GetIndex(first);
-            int secondRoot = GetIndex(second);
+            int firstRoot = GetIndex(p);
+            int secondRoot = GetIndex(q);
             if (_sizes[firstRoot] < _sizes[secondRoot])
             {
-                Indexes[firstRoot] = secondRoot;
+                Id[firstRoot] = secondRoot;
                 _sizes[secondRoot] += _sizes[firstRoot];
             }
             else
             {
-                Indexes[secondRoot] = firstRoot;
+                Id[secondRoot] = firstRoot;
                 _sizes[firstRoot] += _sizes[secondRoot];
             }
         }

@@ -16,9 +16,9 @@ namespace UnitTests.RobertSedgewick.Fundamentals.UnionFindPart
             foreach (var item in data)
             {
                 unionFind.Union(item[0], item[1]);
-                Console.WriteLine(ArrayToString(unionFind.Indexes));
+                Console.WriteLine(ArrayToString(unionFind.Id));
             }
-            Assert.Equal(new[] { 1, 1, 1, 8, 3, 0, 5, 1, 8, 8 }, unionFind.Indexes);
+            Assert.Equal(new[] { 1, 1, 1, 8, 3, 0, 5, 1, 8, 8 }, unionFind.Id);
         }
     }
 }

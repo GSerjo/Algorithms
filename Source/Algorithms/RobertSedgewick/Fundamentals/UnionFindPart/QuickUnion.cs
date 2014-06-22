@@ -8,23 +8,23 @@
 
         protected override int GetIndexCore(int data)
         {
-            while (data != Indexes[data])
+            while (data != Id[data])
             {
-                data = Indexes[data];
+                data = Id[data];
             }
             return data;
         }
 
-        protected override void UnionCore(int first, int second)
+        protected override void UnionCore(int p, int q)
         {
-            int firstRoot = GetIndex(first);
-            int secondRoot = GetIndex(second);
+            int firstRoot = GetIndex(p);
+            int secondRoot = GetIndex(q);
 
             if (firstRoot == secondRoot)
             {
                 return;
             }
-            Indexes[firstRoot] = secondRoot;
+            Id[firstRoot] = secondRoot;
         }
     }
 }

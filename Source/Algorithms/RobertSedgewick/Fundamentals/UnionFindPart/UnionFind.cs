@@ -4,23 +4,23 @@
     {
         protected UnionFind(int capacity)
         {
-            Indexes = new int[capacity];
+            Id = new int[capacity];
             for (int i = 0; i < capacity; i++)
             {
-                Indexes[i] = i;
+                Id[i] = i;
             }
         }
 
-        public int[] Indexes { get; private set; }
+        public int[] Id {  get; protected set; }
 
-        public bool Connected(int first, int second)
+        public bool Connected(int p, int q)
         {
-            return GetIndex(first) == GetIndex(second);
+            return GetIndex(p) == GetIndex(q);
         }
 
-        public void Union(int first, int second)
+        public void Union(int p, int q)
         {
-            UnionCore(first, second);
+            UnionCore(p, q);
         }
 
         protected int GetIndex(int data)
@@ -30,6 +30,6 @@
 
         protected abstract int GetIndexCore(int data);
 
-        protected abstract void UnionCore(int first, int second);
+        protected abstract void UnionCore(int p, int q);
     }
 }
