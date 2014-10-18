@@ -61,6 +61,7 @@
     <Compile Include="ForTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\UnionFind\QuickFindTests.cs" />
+    <Compile Include="RobertSedgewick\Fundamentals\UnionFind\QuickUnionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

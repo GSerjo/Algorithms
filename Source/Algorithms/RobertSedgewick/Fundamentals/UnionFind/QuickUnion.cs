@@ -3,13 +3,13 @@
 namespace Algorithms.RobertSedgewick.Fundamentals.UnionFind
 {
     /// <summary>
-    /// Element as a component
+    /// Elements as a tree.
     /// </summary>
-    public sealed class QuickFind
+    public sealed class QuickUnion
     {
         private readonly int[] _id;
 
-        public QuickFind(int count)
+        public QuickUnion(int count)
         {
             _id = new int[count];
             for (int i = 0; i < count; i++)
@@ -22,36 +22,33 @@ namespace Algorithms.RobertSedgewick.Fundamentals.UnionFind
         public int Count { get; private set; }
 
         /// <summary>
-        /// Connected only if element are belong to the same component.
+        /// Connected only if element are belong to the same Tree (roots are the same).
         /// </summary>
         public bool Connected(int p, int q)
         {
-            return Find(p) == Find(q);
+            return Root(p) == Root(q);
         }
 
         public void Union(int p, int q)
         {
-            int pId = Find(p);
-            int qId = Find(q);
+            int idP = Root(p);
+            int idQ = Root(q);
 
-            if (pId == qId)
+            if (idP == idQ)
             {
                 return;
             }
-
-            for (int i = 0; i < _id.Length; i++)
-            {
-                if (_id[i] == pId)
-                {
-                    _id[i] = qId;
-                }
-            }
             Count--;
+            _id[idQ] = idP;
         }
 
-        private int Find(int p)
+        private int Root(int p)
         {
-            return _id[p];
+            while (p != _id[p])
+            {
+                p = _id[p];
+            }
+            return p;
         }
     }
 }
