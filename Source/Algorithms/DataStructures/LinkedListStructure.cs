@@ -108,6 +108,7 @@ namespace Algorithms.DataStructures
             }
         }
 
+
         private sealed class Node
         {
             public Node Next { get; set; }

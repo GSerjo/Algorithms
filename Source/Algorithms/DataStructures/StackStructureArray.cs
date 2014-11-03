@@ -24,7 +24,7 @@ namespace Algorithms.DataStructures
         {
             if (_size == _data.Length)
             {
-                int newSize = _size == 0 ? 4 : _size*2;
+                int newSize = _size == 0 ? 4 : _size * 2;
                 var tempArray = new T[newSize];
                 _data.CopyTo(tempArray, 0);
                 _data = tempArray;

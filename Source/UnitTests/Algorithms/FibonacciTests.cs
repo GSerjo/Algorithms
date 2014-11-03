@@ -1,4 +1,5 @@
-﻿using Algorithms;
+﻿using System;
+using Algorithms;
 using Xunit;
 
 namespace UnitTests.Algorithms

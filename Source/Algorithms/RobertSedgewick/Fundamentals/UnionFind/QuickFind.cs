@@ -3,7 +3,7 @@
 namespace Algorithms.RobertSedgewick.Fundamentals.UnionFind
 {
     /// <summary>
-    /// Element as a component
+    ///     Element as a component
     /// </summary>
     public sealed class QuickFind
     {
@@ -22,7 +22,7 @@ namespace Algorithms.RobertSedgewick.Fundamentals.UnionFind
         public int Count { get; private set; }
 
         /// <summary>
-        /// Connected only if element are belong to the same component.
+        ///     Connected only if element are belong to the same component.
         /// </summary>
         public bool Connected(int p, int q)
         {

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace Algorithms.DataStructures
 {
@@ -38,6 +39,7 @@ namespace Algorithms.DataStructures
             builder.Append("}");
             return builder.ToString();
         }
+
 
         private sealed class Node
         {

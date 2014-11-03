@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Algorithms
 {
@@ -32,7 +33,6 @@ namespace Algorithms
             }
             return queue.Dequeue();
         }
-
 
         public static void Quick(List<int> list, int start, int end)
         {

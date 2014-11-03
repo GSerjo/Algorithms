@@ -23,6 +23,7 @@ namespace Algorithms.DataStructures
             _head.Next = node;
         }
 
+
         private sealed class Node
         {
             public Node Next { get; set; }

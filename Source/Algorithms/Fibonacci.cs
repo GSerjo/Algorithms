@@ -59,16 +59,16 @@ namespace Algorithms
         {
             var map = new Dictionary<TInput, TResult>();
             return x =>
+            {
+                TResult value;
+                if (map.TryGetValue(x, out value))
                 {
-                    TResult value;
-                    if (map.TryGetValue(x, out value))
-                    {
-                        return value;
-                    }
-                    value = func(x);
-                    map.Add(x, value);
                     return value;
-                };
+                }
+                value = func(x);
+                map.Add(x, value);
+                return value;
+            };
         }
     }
 }

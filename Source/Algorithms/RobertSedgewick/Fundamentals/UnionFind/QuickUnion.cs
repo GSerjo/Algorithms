@@ -3,7 +3,7 @@
 namespace Algorithms.RobertSedgewick.Fundamentals.UnionFind
 {
     /// <summary>
-    /// Elements as a tree.
+    ///     Elements as a tree.
     /// </summary>
     public sealed class QuickUnion
     {
@@ -22,7 +22,7 @@ namespace Algorithms.RobertSedgewick.Fundamentals.UnionFind
         public int Count { get; private set; }
 
         /// <summary>
-        /// Connected only if element are belong to the same Tree (roots are the same).
+        ///     Connected only if element are belong to the same Tree (roots are the same).
         /// </summary>
         public bool Connected(int p, int q)
         {
