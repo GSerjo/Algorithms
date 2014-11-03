@@ -17,7 +17,7 @@ namespace UnitTests.RobertSedgewick.DataStructures
         public void Pop_EmptyStack_Exception()
         {
             var stack = new StackOf<int>();
-            Assert.Throws<InvalidOperationException>(() => stack.Pop());
+            Assert.Throws<IndexOutOfRangeException>(() => stack.Pop());
         }
 
         [Fact]

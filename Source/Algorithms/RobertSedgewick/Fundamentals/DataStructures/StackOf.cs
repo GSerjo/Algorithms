@@ -17,7 +17,7 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
         {
             if (IsEmpty)
             {
-                throw new InvalidOperationException();
+                throw new IndexOutOfRangeException();
             }
             T result = _first.Value;
             _first = _first.Next;
