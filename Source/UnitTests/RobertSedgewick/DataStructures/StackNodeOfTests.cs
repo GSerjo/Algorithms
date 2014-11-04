@@ -4,26 +4,26 @@ using Xunit;
 
 namespace UnitTests.RobertSedgewick.DataStructures
 {
-    public sealed class StackOfTests
+    public sealed class StackNodeOfTests
     {
         [Fact]
         public void Empty_NewStack_True()
         {
-            var stack = new StackOf<int>();
+            var stack = new StackNodeOf<int>();
             Assert.True(stack.IsEmpty);
         }
 
         [Fact]
         public void Pop_EmptyStack_Exception()
         {
-            var stack = new StackOf<int>();
+            var stack = new StackNodeOf<int>();
             Assert.Throws<IndexOutOfRangeException>(() => stack.Pop());
         }
 
         [Fact]
         public void Pop_NewStack_Ok()
         {
-            var stack = new StackOf<int>();
+            var stack = new StackNodeOf<int>();
             stack.Push(1);
             stack.Push(2);
 
@@ -37,7 +37,7 @@ namespace UnitTests.RobertSedgewick.DataStructures
         [Fact]
         public void Push_NewStack_Ok()
         {
-            var stack = new StackOf<int>();
+            var stack = new StackNodeOf<int>();
             stack.Push(1);
 
             Assert.False(stack.IsEmpty);

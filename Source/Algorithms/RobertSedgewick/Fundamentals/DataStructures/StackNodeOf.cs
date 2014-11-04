@@ -2,7 +2,7 @@
 
 namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
 {
-    public sealed class StackOf<T>
+    public sealed class StackNodeOf<T>
     {
         private Node _first;
 
