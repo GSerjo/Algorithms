@@ -1,10 +1,11 @@
 ﻿using System;
 
-namespace UnitTests.RobertSedgewick.Sorting
+namespace Algorithms.RobertSedgewick.Fundamentals.Sorting
 {
     public static class SelectionSort
     {
-        public static void Sort(IComparable[] array)
+        public static void Sort<T>(T[] array)
+            where T : IComparable
         {
             for (int i = 0; i < array.Length; i++)
             {
@@ -20,14 +21,16 @@ namespace UnitTests.RobertSedgewick.Sorting
             }
         }
 
-        private static void Exchange(IComparable[] array, int i, int j)
+        private static void Exchange<T>(T[] array, int i, int j)
         {
-            IComparable temp = array[i];
+            T temp = array[i];
             array[i] = array[j];
             array[j] = temp;
         }
 
-        private static bool Less(IComparable first, IComparable second)
+        private static bool Less<T>(T first, T second)
+            where T : IComparable
+
         {
             return first.CompareTo(second) < 0;
         }
