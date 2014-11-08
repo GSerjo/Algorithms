@@ -60,6 +60,7 @@
     <Compile Include="Algorithms\SorterTests.cs" />
     <Compile Include="ForTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RobertSedgewick\DataStructures\DequeNodeOfTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\StackArrayOfTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\StackFixedArrayOfTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\StackNodeOfTests.cs" />
