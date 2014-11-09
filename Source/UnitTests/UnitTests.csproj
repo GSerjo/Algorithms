@@ -64,6 +64,7 @@
     <Compile Include="RobertSedgewick\DataStructures\StackArrayOfTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\StackFixedArrayOfTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\StackNodeOfTests.cs" />
+    <Compile Include="RobertSedgewick\DataStructures\StequeNodeOfTests.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\UnionFind\QuickFindTests.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\UnionFind\QuickUnionTests.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\UnionFind\WeightedQuickUnionTests.cs" />
