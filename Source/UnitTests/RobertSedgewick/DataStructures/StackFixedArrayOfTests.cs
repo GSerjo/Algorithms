@@ -35,6 +35,13 @@ namespace UnitTests.RobertSedgewick.DataStructures
         }
 
         [Fact]
+        public void Push_BoundaryReached_Exception()
+        {
+            var stack = new StackFixedArrayOf<int>(0);
+            Assert.Throws<IndexOutOfRangeException>(()=> stack.Push(1));
+        }
+
+        [Fact]
         public void Push_NewStack_Ok()
         {
             var stack = new StackFixedArrayOf<int>(5);
