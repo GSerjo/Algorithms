@@ -47,6 +47,7 @@
     <Compile Include="Fibonacci.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\DequeNodeOf.cs" />
+    <Compile Include="RobertSedgewick\Fundamentals\DataStructures\QueueNodeOf.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\StackArrayOf.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\StackFixedArrayOf.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\StackNodeOf.cs" />
