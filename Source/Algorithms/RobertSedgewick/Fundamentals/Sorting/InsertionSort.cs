@@ -2,26 +2,24 @@
 
 namespace Algorithms.RobertSedgewick.Fundamentals.Sorting
 {
-    public static class SelectionSort
+    public static class InsertionSort
     {
         public static void Sort<T>(T[] array)
             where T : IComparable
         {
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 1; i < array.Length; i++)
             {
-                int min = i;
-                for (int j = i + 1; j < array.Length; j++)
+                for (int j = i; j > 0; j--)
                 {
-                    if (Less(array[j], array[min]))
+                    if (Less(array[j], array[j - 1]))
                     {
-                        min = j;
+                        Exchage(array, j, j - 1);
                     }
                 }
-                Exchange(array, i, min);
             }
         }
 
-        private static void Exchange<T>(T[] array, int i, int j)
+        private static void Exchage<T>(T[] array, int i, int j)
         {
             T temp = array[i];
             array[i] = array[j];
