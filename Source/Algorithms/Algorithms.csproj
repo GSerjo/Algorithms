@@ -53,6 +53,7 @@
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\StackNodeOf.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\StequeNodeOf.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\Sorting\InsertionSort.cs" />
+    <Compile Include="RobertSedgewick\Fundamentals\Sorting\MergeSort.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\Sorting\SelectionSort.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\UnionFind\QuickFind.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\UnionFind\QuickUnion.cs" />
