@@ -15,6 +15,10 @@ namespace Algorithms.RobertSedgewick.Fundamentals.Sorting
                     {
                         Exchage(array, j, j - 1);
                     }
+                    else
+                    {
+                        break;
+                    }
                 }
             }
         }
