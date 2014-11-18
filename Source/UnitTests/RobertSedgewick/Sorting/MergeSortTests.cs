@@ -8,7 +8,7 @@ namespace UnitTests.RobertSedgewick.Sorting
         [Fact]
         public void Sort()
         {
-            var array = new int[] { 1, 0, 3, 2, 5, 2 };
+            var array = new int[] { 1, 0, 3, 2, 5 };
             MergeSort.Sort(array);
             Assert.True(IsSorted(array));
         }
