@@ -55,12 +55,11 @@
     <Compile Include="RobertSedgewick\Fundamentals\Sorting\InsertionSort.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\Sorting\MergeSort.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\Sorting\SelectionSort.cs" />
-    <Compile Include="RobertSedgewick\Fundamentals\UnionFind\QuickFind.cs" />
-    <Compile Include="RobertSedgewick\Fundamentals\UnionFind\QuickUnion.cs" />
-    <Compile Include="RobertSedgewick\Fundamentals\UnionFind\WeightedQuickUnion.cs" />
     <Compile Include="Sorter.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="RobertSedgewick\Fundamentals\UnionFind\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

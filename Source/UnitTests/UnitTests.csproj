@@ -66,9 +66,6 @@
     <Compile Include="RobertSedgewick\DataStructures\StackFixedArrayOfTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\StackNodeOfTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\StequeNodeOfTests.cs" />
-    <Compile Include="RobertSedgewick\Fundamentals\UnionFind\QuickFindTests.cs" />
-    <Compile Include="RobertSedgewick\Fundamentals\UnionFind\QuickUnionTests.cs" />
-    <Compile Include="RobertSedgewick\Fundamentals\UnionFind\WeightedQuickUnionTests.cs" />
     <Compile Include="RobertSedgewick\Sorting\InsertionSortTests.cs" />
     <Compile Include="RobertSedgewick\Sorting\MergeSortTests.cs" />
     <Compile Include="RobertSedgewick\Sorting\SelectionSortTests.cs" />
@@ -112,7 +109,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="RobertSedgewick\Fundamentals\UnionFind\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
