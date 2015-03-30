@@ -46,18 +46,13 @@
     <Compile Include="DataStructures\StackStructureArray.cs" />
     <Compile Include="Fibonacci.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RobertSedgewick\Fundamentals\DataStructures\DequeNodeOf.cs" />
-    <Compile Include="RobertSedgewick\Fundamentals\DataStructures\QueueNodeOf.cs" />
-    <Compile Include="RobertSedgewick\Fundamentals\DataStructures\StackArrayOf.cs" />
-    <Compile Include="RobertSedgewick\Fundamentals\DataStructures\StackFixedArrayOf.cs" />
-    <Compile Include="RobertSedgewick\Fundamentals\DataStructures\StackNodeOf.cs" />
-    <Compile Include="RobertSedgewick\Fundamentals\DataStructures\StequeNodeOf.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\Sorting\InsertionSort.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\Sorting\MergeSort.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\Sorting\SelectionSort.cs" />
     <Compile Include="Sorter.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="RobertSedgewick\Fundamentals\DataStructures\" />
     <Folder Include="RobertSedgewick\Fundamentals\UnionFind\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
