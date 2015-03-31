@@ -19,7 +19,7 @@ namespace Algorithms.RobertSedgewick.Fundamentals.UnionFind
 
         public int Count { get; private set; }
 
-        public bool IsConnected(int p, int q)
+        public bool Connected(int p, int q)
         {
             return Find(p) == Find(q);
         }
