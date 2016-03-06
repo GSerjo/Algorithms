@@ -4,23 +4,23 @@ using Xunit;
 
 namespace UnitTests.RobertSedgewick.Fundamentals.UnionFind
 {
-    public sealed class QuickFindTests
+    public sealed class QuickUnionTests
     {
         [Fact]
         public void QuickFind_TinyFile_True()
         {
             var dots = new Dots(@"DataStore\tinyUF.txt");
-            var quickFind = new QuickFind(dots.Count);
+            var quickUnion = new QuickUnion(dots.Count);
 
             foreach (Tuple<int, int> item in dots.Items)
             {
-                if (quickFind.Connected(item.Item1, item.Item2))
+                if (quickUnion.Connected(item.Item1, item.Item2))
                 {
                     continue;
                 }
-                quickFind.Union(item.Item1, item.Item2);
+                quickUnion.Union(item.Item1, item.Item2);
             }
-            Assert.Equal(2, quickFind.Count);
+            Assert.Equal(2, quickUnion.Count);
         }
     }
 }
