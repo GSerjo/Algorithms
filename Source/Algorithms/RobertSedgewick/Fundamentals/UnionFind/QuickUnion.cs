@@ -21,15 +21,6 @@
             return Find(p) == Find(q);
         }
 
-        public int Find(int p)
-        {
-            while (p != _ids[p])
-            {
-                p = _ids[p];
-            }
-            return p;
-        }
-
         public void Union(int p, int q)
         {
             int pRoot = Find(p);
@@ -41,6 +32,15 @@
             }
             _ids[pRoot] = qRoot;
             Count--;
+        }
+
+        private int Find(int p)
+        {
+            while (p != _ids[p])
+            {
+                p = _ids[p];
+            }
+            return p;
         }
     }
 }
