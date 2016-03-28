@@ -49,6 +49,7 @@
     <Compile Include="Fibonacci.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\BinarySearch.cs" />
+    <Compile Include="RobertSedgewick\Fundamentals\DataStructures\StackArrayOf.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\StackNodeOf.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\UnionFind\QuickFind.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\UnionFind\QuickUnion.cs" />

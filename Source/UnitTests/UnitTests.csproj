@@ -73,6 +73,7 @@
     <Compile Include="Exrensions\ReverseTests.cs" />
     <Compile Include="ForTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RobertSedgewick\DataStructures\StackArrayOfTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\StackNodeOfTests.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\BinarySearchTests.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\UnionFind\Dots.cs" />
