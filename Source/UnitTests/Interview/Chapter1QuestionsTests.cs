@@ -15,5 +15,14 @@ namespace UnitTests.Interview
             bool result = Chapter1Questions.AllUniqueCharacters(value);
             Assert.Equal(expected, result);
         }
+
+        [InlineData("", "")]
+        [InlineData("abcde", "edcba")]
+        [Theory]
+        public void Reverse(string source, string expected)
+        {
+            string result = Chapter1Questions.Reverse(source);
+            Assert.Equal(expected, result);
+        }
     }
 }
