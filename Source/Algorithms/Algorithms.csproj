@@ -48,6 +48,7 @@
     <Compile Include="Exrensions\ListExtensions.cs" />
     <Compile Include="Exrensions\StringExtensions.cs" />
     <Compile Include="Fibonacci.cs" />
+    <Compile Include="Interview\Chapter1Questions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\BinarySearch.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\MaxPriorityQueue.cs" />
