@@ -6,18 +6,9 @@ namespace UnitTests.RobertSedgewick.DataStructures
     public sealed class LinkedListNodeTests
     {
         [Fact]
-        public void Initial()
-        {
-            var linkedList = new LinkedListNode<int>();
-
-            Assert.Equal(0, linkedList.Count);
-            Assert.True(linkedList.IsEmpty);
-        }
-
-        [Fact]
         public void AddFirst()
         {
-            var linkedList = new LinkedListNode<int>();
+            var linkedList = new LinkedListNodeOf<int>();
 
             linkedList.AddFirst(1);
             linkedList.AddFirst(2);
@@ -32,7 +23,7 @@ namespace UnitTests.RobertSedgewick.DataStructures
         [Fact]
         public void AddLast()
         {
-            var linkedList = new LinkedListNode<int>();
+            var linkedList = new LinkedListNodeOf<int>();
 
             linkedList.AddLast(1);
             linkedList.AddLast(2);
@@ -42,6 +33,27 @@ namespace UnitTests.RobertSedgewick.DataStructures
 
             Assert.False(linkedList.IsEmpty);
             Assert.Equal(2, linkedList.Count);
+        }
+
+        [Fact]
+        public void GetEnumerator()
+        {
+            var linkedList = new LinkedListNodeOf<int>();
+
+            linkedList.AddFirst(1);
+            linkedList.AddFirst(2);
+            linkedList.AddLast(3);
+
+            Assert.Equal(new[] { 2, 1, 3 }, linkedList.ToEnumerable());
+        }
+
+        [Fact]
+        public void Initial()
+        {
+            var linkedList = new LinkedListNodeOf<int>();
+
+            Assert.Equal(0, linkedList.Count);
+            Assert.True(linkedList.IsEmpty);
         }
     }
 }

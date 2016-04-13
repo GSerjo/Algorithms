@@ -1,6 +1,9 @@
-﻿namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
 {
-    public sealed class LinkedListNode<T>
+    public sealed class LinkedListNodeOf<T> : IEnumerable<T>
     {
         public Node Head { get; private set; }
         public Node Tail { get; private set; }
@@ -45,6 +48,31 @@
         {
             public Node Next { get; set; }
             public T Value { get; set; }
+        }
+
+
+        public IEnumerable<T> ToEnumerable()
+        {
+            IEnumerator<T> enumerator = GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                yield return enumerator.Current;
+            }
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            Node current = Head;
+            while (current !=null)
+            {
+                yield return current.Value;
+                current = current.Next;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }
