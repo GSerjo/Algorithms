@@ -48,6 +48,21 @@ namespace UnitTests.RobertSedgewick.DataStructures
         }
 
         [Fact]
+        public void GetFirst()
+        {
+            var linkedList = new LinkedListNodeOf<int>();
+
+            linkedList.AddFirst(1);
+            linkedList.AddFirst(2);
+
+            int actual = linkedList.GetFirst();
+
+            Assert.Equal(2, actual);
+            Assert.Equal(1, linkedList.Count);
+            Assert.False(linkedList.IsEmpty);
+        }
+
+        [Fact]
         public void Initial()
         {
             var linkedList = new LinkedListNodeOf<int>();

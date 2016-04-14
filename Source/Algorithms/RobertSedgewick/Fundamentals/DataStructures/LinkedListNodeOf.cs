@@ -1,15 +1,30 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
 {
     public sealed class LinkedListNodeOf<T> : IEnumerable<T>
     {
+        public int Count { get; private set; }
         public Node Head { get; private set; }
+        public bool IsEmpty => Count == 0;
         public Node Tail { get; private set; }
 
-        public int Count { get; private set; }
-        public bool IsEmpty => Count == 0;
+        public IEnumerator<T> GetEnumerator()
+        {
+            Node current = Head;
+            while (current != null)
+            {
+                yield return current.Value;
+                current = current.Next;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
 
         public void AddFirst(T value)
         {
@@ -43,13 +58,16 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             Count++;
         }
 
-
-        public sealed class Node
+        public T GetFirst()
         {
-            public Node Next { get; set; }
-            public T Value { get; set; }
+            if (IsEmpty)
+            {
+                throw new InvalidOperationException();
+            }
+            T result = Head.Value;
+            RemoveFirst();
+            return result;
         }
-
 
         public IEnumerable<T> ToEnumerable()
         {
@@ -60,19 +78,22 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             }
         }
 
-        public IEnumerator<T> GetEnumerator()
+        private void RemoveFirst()
         {
-            Node current = Head;
-            while (current !=null)
+            Head = Head.Next;
+            Count--;
+            if (IsEmpty)
             {
-                yield return current.Value;
-                current = current.Next;
+                Head = null;
+                Tail = null;
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+
+        public sealed class Node
         {
-            return GetEnumerator();
+            public Node Next { get; set; }
+            public T Value { get; set; }
         }
     }
 }
