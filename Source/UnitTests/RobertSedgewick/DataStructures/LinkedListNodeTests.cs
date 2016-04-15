@@ -63,6 +63,26 @@ namespace UnitTests.RobertSedgewick.DataStructures
         }
 
         [Fact]
+        public void RemoveLast()
+        {
+            var linkedList = new LinkedListNodeOf<int>();
+
+            linkedList.AddFirst(1);
+            linkedList.AddFirst(2);
+            linkedList.AddFirst(3);
+
+            linkedList.RemoveLast();
+
+            Assert.Equal(2, linkedList.Tail.Value);
+            Assert.Equal(2, linkedList.Count);
+            Assert.False(linkedList.IsEmpty);
+
+            linkedList.RemoveLast();
+            linkedList.RemoveLast();
+            Assert.True(linkedList.IsEmpty);
+        }
+
+        [Fact]
         public void Initial()
         {
             var linkedList = new LinkedListNodeOf<int>();

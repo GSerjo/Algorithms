@@ -89,6 +89,32 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             }
         }
 
+        public void RemoveLast()
+        {
+            if (IsEmpty)
+            {
+                throw new InvalidOperationException();
+            }
+            if (Count == 1)
+            {
+                RemoveFirst();
+                return;
+            }
+            Node current = Head;
+            while (current.Next != Tail)
+            {
+                current = current.Next;
+            }
+            Tail = current;
+            Tail.Next = null;
+            Count--;
+            if (IsEmpty)
+            {
+                Head = null;
+                Tail = null;
+            }
+        }
+
 
         public sealed class Node
         {
