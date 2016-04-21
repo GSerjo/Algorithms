@@ -51,6 +51,7 @@
     <Compile Include="Interview\Chapter1Questions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\BinarySearch.cs" />
+    <Compile Include="RobertSedgewick\Fundamentals\DataStructures\DepthFirstPaths.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\Graph.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\LinkedListNodeOf.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\MaxPriorityQueue.cs" />
