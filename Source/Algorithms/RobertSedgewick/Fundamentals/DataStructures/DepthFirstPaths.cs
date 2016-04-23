@@ -20,7 +20,7 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
         private void DepthFirstSearch(Graph graph, int vertex)
         {
             _marked[vertex] = true;
-            foreach (int w in graph.Adj(vertex))
+            foreach (int w in graph.Adjacent(vertex))
             {
                 if (_marked[w])
                 {

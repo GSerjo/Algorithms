@@ -4,15 +4,15 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
 {
     public sealed class Graph
     {
-        private readonly List<int>[] _adj;
+        private readonly List<int>[] _adjacent;
 
         public Graph(int vertexCount)
         {
             VertexCount = vertexCount;
-            _adj = new List<int>[vertexCount];
+            _adjacent = new List<int>[vertexCount];
             for (var i = 0; i < vertexCount; i++)
             {
-                _adj[i] = new List<int>();
+                _adjacent[i] = new List<int>();
             }
         }
 
@@ -21,14 +21,14 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
 
         public void AddEdge(int vertexOne, int vertexSecond)
         {
-            _adj[vertexOne].Add(vertexSecond);
-            _adj[vertexSecond].Add(vertexOne);
+            _adjacent[vertexOne].Add(vertexSecond);
+            _adjacent[vertexSecond].Add(vertexOne);
             EdgeCount++;
         }
 
-        public IEnumerable<int> Adj(int vertex)
+        public IEnumerable<int> Adjacent(int vertex)
         {
-            return _adj[vertex];
+            return _adjacent[vertex];
         }
     }
 }
