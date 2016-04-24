@@ -75,6 +75,7 @@
     <Compile Include="Interview\Chapter1QuestionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RobertSedgewick\DataStructures\DepthFirstPathsTests.cs" />
+    <Compile Include="RobertSedgewick\DataStructures\GraphCyclePathsTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\LinkedListNodeTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\MaxPriorityQueueTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\StackArrayOfTests.cs" />

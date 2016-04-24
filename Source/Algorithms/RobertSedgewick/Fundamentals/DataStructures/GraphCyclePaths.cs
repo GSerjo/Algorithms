@@ -1,10 +1,10 @@
 ﻿namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
 {
-    public sealed class GraphCyclePath
+    public sealed class GraphCyclePaths
     {
         private readonly bool[] _marked;
 
-        public GraphCyclePath(Graph graph)
+        public GraphCyclePaths(Graph graph)
         {
             _marked = new bool[graph.VertexCount];
             Dfs(graph, 0, 0);
