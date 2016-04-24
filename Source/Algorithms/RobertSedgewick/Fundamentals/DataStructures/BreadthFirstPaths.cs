@@ -24,18 +24,17 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
 
         public IEnumerable<int> PathTo(int vertex)
         {
-            if (!_marked[vertex])
+            if (!HasPathTo(vertex))
             {
                 return Enumerable.Empty<int>();
             }
             var result = new Stack<int>();
-            int current = _edgeTo[vertex];
-            while (_sourceVertex != current)
+            while (_sourceVertex != vertex)
             {
-                result.Push(current);
-                current = _edgeTo[current];
+                result.Push(vertex);
+                vertex = _edgeTo[vertex];
             }
-            result.Push(current);
+            result.Push(_sourceVertex);
             return result;
         }
 

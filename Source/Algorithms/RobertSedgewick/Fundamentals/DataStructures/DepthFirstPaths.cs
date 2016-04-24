@@ -42,14 +42,13 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             {
                 return Enumerable.Empty<int>();
             }
-            int current = _edgeTo[vertex];
-            var result = new Stack<int>(new[] { current });
-
-            while (_sourceVertex != current)
+            var result = new Stack<int>();
+            while (_sourceVertex != vertex)
             {
-                current = _edgeTo[current];
-                result.Push(current);
+                result.Push(vertex);
+                vertex = _edgeTo[vertex];
             }
+            result.Push(_sourceVertex);
             return result;
         }
 
