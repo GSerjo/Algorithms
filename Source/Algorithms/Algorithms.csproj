@@ -54,6 +54,7 @@
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\BreadthFirstPaths.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\DepthFirstPaths.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\Graph.cs" />
+    <Compile Include="RobertSedgewick\Fundamentals\DataStructures\GraphCyclePath.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\LinkedListNodeOf.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\MaxPriorityQueue.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\StackArrayOf.cs" />
