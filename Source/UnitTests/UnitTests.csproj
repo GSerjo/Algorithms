@@ -82,6 +82,7 @@
     <Compile Include="RobertSedgewick\DataStructures\StackArrayOfTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\StackNodeOfTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\SymbolTableTests.cs" />
+    <Compile Include="RobertSedgewick\DataStructures\TreeOfTests.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\BinarySearchTests.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\UnionFind\Dots.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\UnionFind\QuickFindTests.cs" />
