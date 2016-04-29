@@ -90,7 +90,7 @@ namespace UnitTests.RobertSedgewick.DataStructures
         }
 
         [Fact]
-        public void PrintInorder()
+        public void Inorder()
         {
             var tree = new TreeOf();
             tree.Put(5)
@@ -98,13 +98,13 @@ namespace UnitTests.RobertSedgewick.DataStructures
                 .Put(4);
 
             var result = new List<int>();
-            tree.PrintInorder(result.Add);
+            tree.Inorder(result.Add);
 
             Assert.Equal(new[] { 4, 5, 7 }, result);
         }
 
         [Fact]
-        public void PrintPostorder()
+        public void Preoder()
         {
             var tree = new TreeOf();
             tree.Put(5)
@@ -112,7 +112,21 @@ namespace UnitTests.RobertSedgewick.DataStructures
                 .Put(4);
 
             var result = new List<int>();
-            tree.PrintPostorder(result.Add);
+            tree.Preoder(result.Add);
+
+            Assert.Equal(new[] { 5, 4, 7 }, result);
+        }
+
+        [Fact]
+        public void Postorder()
+        {
+            var tree = new TreeOf();
+            tree.Put(5)
+                .Put(7)
+                .Put(4);
+
+            var result = new List<int>();
+            tree.Postorder(result.Add);
 
             Assert.Equal(new[] { 4, 7, 5 }, result);
         }

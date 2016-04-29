@@ -36,14 +36,19 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             return HasPathSumBySum(_root, sum, 0);
         }
 
-        public void PrintInorder(Action<int> action)
+        public void Inorder(Action<int> action)
         {
-            PrintInorder(_root, action);
+            Inorder(_root, action);
         }
 
-        public void PrintPostorder(Action<int> action)
+        public void Postorder(Action<int> action)
         {
-            PrintPostorder(_root, action);
+            Postorder(_root, action);
+        }
+
+        public void Preoder(Action<int> action)
+        {
+            Preoder(_root, action);
         }
 
         public TreeOf Put(int value)
@@ -98,26 +103,37 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             return false;
         }
 
-        private static void PrintInorder(Node node, Action<int> action)
+        private static void Inorder(Node node, Action<int> action)
         {
             if (node == null)
             {
                 return;
             }
-            PrintInorder(node.Left, action);
+            Inorder(node.Left, action);
             action(node.Value);
-            PrintInorder(node.Right, action);
+            Inorder(node.Right, action);
         }
 
-        private static void PrintPostorder(Node node, Action<int> action)
+        private static void Postorder(Node node, Action<int> action)
         {
             if (node == null)
             {
                 return;
             }
-            PrintPostorder(node.Left, action);
-            PrintPostorder(node.Right, action);
+            Postorder(node.Left, action);
+            Postorder(node.Right, action);
             action(node.Value);
+        }
+
+        private static void Preoder(Node node, Action<int> action)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            action(node.Value);
+            Preoder(node.Left, action);
+            Preoder(node.Right, action);
         }
 
         private static Node Put(Node node, int value)
