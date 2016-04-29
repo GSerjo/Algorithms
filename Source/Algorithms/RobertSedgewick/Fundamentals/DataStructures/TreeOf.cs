@@ -31,6 +31,11 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             return HasPathSumBySubtract(_root, sum);
         }
 
+        public bool HasPathSumBySum(int sum)
+        {
+            return HasPathSumBySum(_root, sum, 0);
+        }
+
         public void PrintInorder(Action<int> action)
         {
             PrintInorder(_root, action);
@@ -58,6 +63,20 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
                 return node.Value;
             }
             return GetMinRecursive(node.Left);
+        }
+
+        private static bool HasPathSumBySum(Node node, int sum, int current)
+        {
+            if (node == null)
+            {
+                return sum == current;
+            }
+            int subSum = current + node.Value;
+            if (HasPathSumBySum(node.Left, sum, subSum) || HasPathSumBySum(node.Right, sum, subSum))
+            {
+                return true;
+            }
+            return false;
         }
 
         private static bool HasPathSumBySubtract(Node node, int sum)
