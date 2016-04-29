@@ -7,6 +7,26 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
     {
         private Node _root;
 
+        public T GetMin()
+        {
+            if (_root == null)
+            {
+                return default(T);
+            }
+            Node curent = _root;
+
+            while (curent.Left != null)
+            {
+                curent = curent.Left;
+            }
+            return curent.Value;
+        }
+
+        public T GetMinRecursive()
+        {
+            return GetMinRecursive(_root);
+        }
+
         public void PrintInOrder(Action<T> action)
         {
             PrintInOrder(_root, action);
@@ -15,6 +35,19 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
         public void Put(T value)
         {
             _root = Put(_root, value);
+        }
+
+        private static T GetMinRecursive(Node node)
+        {
+            if (node == null)
+            {
+                return default(T);
+            }
+            else if (node.Left == null)
+            {
+                return node.Value;
+            }
+            return GetMinRecursive(node.Left);
         }
 
         private static void PrintInOrder(Node node, Action<T> action)
