@@ -2,16 +2,15 @@
 
 namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
 {
-    public sealed class TreeOf<T>
-        where T : IComparable
+    public sealed class TreeOf
     {
         private Node _root;
 
-        public T GetMin()
+        public int GetMin()
         {
             if (_root == null)
             {
-                return default(T);
+                return 0;
             }
             Node curent = _root;
 
@@ -22,31 +21,37 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             return curent.Value;
         }
 
-        public T GetMinRecursive()
+        public int GetMinRecursive()
         {
             return GetMinRecursive(_root);
         }
 
-        public void PrintInorder(Action<T> action)
+        public bool HasPathSumBySubtract(int sum)
+        {
+            return HasPathSumBySubtract(_root, sum);
+        }
+
+        public void PrintInorder(Action<int> action)
         {
             PrintInorder(_root, action);
         }
 
-        public void PrintPostorder(Action<T> action)
+        public void PrintPostorder(Action<int> action)
         {
             PrintPostorder(_root, action);
         }
 
-        public void Put(T value)
+        public TreeOf Put(int value)
         {
             _root = Put(_root, value);
+            return this;
         }
 
-        private static T GetMinRecursive(Node node)
+        private static int GetMinRecursive(Node node)
         {
             if (node == null)
             {
-                return default(T);
+                return 0;
             }
             else if (node.Left == null)
             {
@@ -55,7 +60,21 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             return GetMinRecursive(node.Left);
         }
 
-        private static void PrintInorder(Node node, Action<T> action)
+        private static bool HasPathSumBySubtract(Node node, int sum)
+        {
+            if (node == null)
+            {
+                return sum == 0;
+            }
+            int subSum = sum - node.Value;
+            if (HasPathSumBySubtract(node.Left, subSum) || HasPathSumBySubtract(node.Right, subSum))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private static void PrintInorder(Node node, Action<int> action)
         {
             if (node == null)
             {
@@ -66,7 +85,7 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             PrintInorder(node.Right, action);
         }
 
-        private static void PrintPostorder(Node node, Action<T> action)
+        private static void PrintPostorder(Node node, Action<int> action)
         {
             if (node == null)
             {
@@ -77,7 +96,7 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             action(node.Value);
         }
 
-        private static Node Put(Node node, T value)
+        private static Node Put(Node node, int value)
         {
             if (node == null)
             {
@@ -104,7 +123,7 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
         {
             public Node Left { get; set; }
             public Node Right { get; set; }
-            public T Value { get; set; }
+            public int Value { get; set; }
         }
     }
 }
