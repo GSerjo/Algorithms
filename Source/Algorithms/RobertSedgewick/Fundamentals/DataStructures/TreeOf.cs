@@ -52,6 +52,11 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             return this;
         }
 
+        public int Sum()
+        {
+            return Sum(_root);
+        }
+
         private static int GetMinRecursive(Node node)
         {
             if (node == null)
@@ -65,20 +70,6 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             return GetMinRecursive(node.Left);
         }
 
-        private static bool HasPathSumBySum(Node node, int sum, int current)
-        {
-            if (node == null)
-            {
-                return sum == current;
-            }
-            int subSum = current + node.Value;
-            if (HasPathSumBySum(node.Left, sum, subSum) || HasPathSumBySum(node.Right, sum, subSum))
-            {
-                return true;
-            }
-            return false;
-        }
-
         private static bool HasPathSumBySubtract(Node node, int sum)
         {
             if (node == null)
@@ -87,6 +78,20 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             }
             int subSum = sum - node.Value;
             if (HasPathSumBySubtract(node.Left, subSum) || HasPathSumBySubtract(node.Right, subSum))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private static bool HasPathSumBySum(Node node, int sum, int current)
+        {
+            if (node == null)
+            {
+                return sum == current;
+            }
+            int subSum = current + node.Value;
+            if (HasPathSumBySum(node.Left, sum, subSum) || HasPathSumBySum(node.Right, sum, subSum))
             {
                 return true;
             }
@@ -135,6 +140,15 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
                 node.Value = value;
             }
             return node;
+        }
+
+        private static int Sum(Node node)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+            return Sum(node.Left) + Sum(node.Right) + node.Value;
         }
 
 

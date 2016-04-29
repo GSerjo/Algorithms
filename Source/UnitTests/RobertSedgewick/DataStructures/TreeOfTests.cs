@@ -55,6 +55,20 @@ namespace UnitTests.RobertSedgewick.DataStructures
             Assert.False(result);
         }
 
+        [Fact]
+        public void Sum()
+        {
+            var tree = new TreeOf();
+            tree.Put(5)
+                .Put(3)
+                .Put(2)
+                .Put(1);
+
+            int result =  tree.Sum();
+
+            Assert.Equal(11, result);
+        }
+
 
         [Fact]
         public void HasPathSumBySum()
