@@ -27,9 +27,14 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             return GetMinRecursive(_root);
         }
 
-        public void PrintInOrder(Action<T> action)
+        public void PrintInorder(Action<T> action)
         {
-            PrintInOrder(_root, action);
+            PrintInorder(_root, action);
+        }
+
+        public void PrintPostorder(Action<T> action)
+        {
+            PrintPostorder(_root, action);
         }
 
         public void Put(T value)
@@ -50,15 +55,26 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             return GetMinRecursive(node.Left);
         }
 
-        private static void PrintInOrder(Node node, Action<T> action)
+        private static void PrintInorder(Node node, Action<T> action)
         {
             if (node == null)
             {
                 return;
             }
-            PrintInOrder(node.Left, action);
+            PrintInorder(node.Left, action);
             action(node.Value);
-            PrintInOrder(node.Right, action);
+            PrintInorder(node.Right, action);
+        }
+
+        private static void PrintPostorder(Node node, Action<T> action)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            PrintPostorder(node.Left, action);
+            PrintPostorder(node.Right, action);
+            action(node.Value);
         }
 
         private static Node Put(Node node, T value)

@@ -7,7 +7,7 @@ namespace UnitTests.RobertSedgewick.DataStructures
     public sealed class TreeOfTests
     {
         [Fact]
-        public void PrintInOrder()
+        public void PrintInorder()
         {
             var tree = new TreeOf<int>();
             tree.Put(5);
@@ -15,9 +15,23 @@ namespace UnitTests.RobertSedgewick.DataStructures
             tree.Put(4);
 
             var result = new List<int>();
-            tree.PrintInOrder(result.Add);
+            tree.PrintInorder(result.Add);
 
             Assert.Equal(new[] { 4, 5, 7 }, result);
+        }
+
+        [Fact]
+        public void PrintPostorder()
+        {
+            var tree = new TreeOf<int>();
+            tree.Put(5);
+            tree.Put(7);
+            tree.Put(4);
+
+            var result = new List<int>();
+            tree.PrintPostorder(result.Add);
+
+            Assert.Equal(new[] { 4, 7, 5 }, result);
         }
 
         [Fact]
