@@ -118,6 +118,27 @@ namespace UnitTests.RobertSedgewick.DataStructures
         }
 
         [Fact]
+        public void VerticalSum()
+        {
+            var tree = new TreeOf();
+            tree.Put(6)
+                .Put(8)
+                .Put(4)
+                .Put(3)
+                .Put(5)
+                .Put(7)
+                .Put(9);
+
+            Dictionary<int, int> result = tree.VerticalSum();
+
+            var expected = new Dictionary<int, int>
+            {
+                { 0, 18 }, { -1, 4 }, { -2, 3 }, { 1, 8 }, { 2, 9 }
+            };
+            Assert.Equal(expected, result);
+        }
+
+        [Fact]
         public void Postorder()
         {
             var tree = new TreeOf();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
 {
@@ -60,6 +61,13 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
         public int Sum()
         {
             return Sum(_root);
+        }
+
+        public Dictionary<int, int> VerticalSum()
+        {
+            var result = new Dictionary<int, int>();
+            VerticalSum(_root, 0, result);
+            return result;
         }
 
         private static int GetMinRecursive(Node node)
@@ -165,6 +173,24 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
                 return 0;
             }
             return Sum(node.Left) + Sum(node.Right) + node.Value;
+        }
+
+        private static void VerticalSum(Node node, int distance, Dictionary<int, int> map)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            if (map.ContainsKey(distance))
+            {
+                map[distance] += node.Value;
+            }
+            else
+            {
+                map[distance] = node.Value;
+            }
+            VerticalSum(node.Left, distance - 1, map);
+            VerticalSum(node.Right, distance + 1, map);
         }
 
 
