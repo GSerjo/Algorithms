@@ -13,5 +13,14 @@ namespace UnitTests.DynamicProgramming
 
             Assert.Equal(5, result);
         }
+
+        [Fact]
+        public void FindMultipleLength()
+        {
+            var array = new[] { 3, 6, 7, 12 };
+            int result = LongestIncreasingSubsequence.FindMultipleLength(array);
+
+            Assert.Equal(3, result);
+        }
     }
 }
