@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Algorithms.RobertSedgewick.Fundamentals.DataStructures;
 using Xunit;
 
@@ -150,6 +151,39 @@ namespace UnitTests.RobertSedgewick.DataStructures
             tree.Postorder(result.Add);
 
             Assert.Equal(new[] { 4, 7, 5 }, result);
+        }
+
+        [Fact]
+        public void TrappingRainWater()
+        {
+            int result = TrappingRainWater(new[] { 3, 0, 0, 2, 0, 4 });
+            Assert.Equal(10, result);
+        }
+
+        private static int TrappingRainWater(int[] array)
+        {
+            if (array == null || array.Length <= 2)
+            {
+                return 0;
+            }
+            var left = new int[array.Length];
+            var right = new int[array.Length];
+            left[0] = array[0];
+            for (var i = 1; i < array.Length; i++)
+            {
+                left[i] = Math.Max(left[i - 1], array[i]);
+            }
+            right[array.Length - 1] = array[array.Length - 1];
+            for (int i = array.Length - 2; i >= 0; i--)
+            {
+                right[i] = Math.Max(array[i], right[i + 1]);
+            }
+            var result = 0;
+            for (var i = 0; i < array.Length; i++)
+            {
+                result += Math.Min(left[i], right[i]) - array[i];
+            }
+            return result;
         }
     }
 }
