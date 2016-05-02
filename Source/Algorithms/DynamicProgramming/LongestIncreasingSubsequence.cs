@@ -34,7 +34,6 @@
             return result;
         }
 
-
         public static int FindMultipleLength(int[] array)
         {
             if (array == null || array.Length == 0)
@@ -43,7 +42,7 @@
             }
             var result = 0;
             var cache = new int[array.Length];
-            for (int i = 0; i < array.Length; i++)
+            for (var i = 0; i < array.Length; i++)
             {
                 cache[i] = 1;
                 for (int j = i - 1; j >= 0; j--)

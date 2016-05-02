@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
 {
-    public sealed class TreeOf
+    public sealed class TreeOf : IEnumerable<int>
     {
         private Node _root;
 
@@ -25,6 +26,24 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
         public int GetMinRecursive()
         {
             return GetMinRecursive(_root);
+        }
+
+        public void AddAllGreaterValuesToEveryNode()
+        {
+            var sum = 0;
+            AddAllGreaterValuesToEveryNode(_root, ref sum);
+        }
+
+        private static void AddAllGreaterValuesToEveryNode(Node node, ref int sum)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            AddAllGreaterValuesToEveryNode(node.Right, ref sum);
+            sum = sum + node.Value;
+            node.Value = sum;
+            AddAllGreaterValuesToEveryNode(node.Left, ref sum);
         }
 
         public bool HasPathSumBySubtract(int sum)
@@ -194,11 +213,51 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
         }
 
 
-        private sealed class Node
+        private sealed class Node : IEnumerable<int>
         {
             public Node Left { get; set; }
             public Node Right { get; set; }
             public int Value { get; set; }
+
+            public IEnumerator<int> GetEnumerator()
+            {
+                yield return Value;
+
+                if (Left != null)
+                {
+                    foreach (int value in Left)
+                    {
+                        yield return value;
+                    }
+                }
+
+                if (Right != null)
+                {
+                    foreach (int value in Right)
+                    {
+                        yield return value;
+                    }
+                }
+            }
+
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                return GetEnumerator();
+            }
+        }
+
+
+        public IEnumerator<int> GetEnumerator()
+        {
+            foreach (int value in _root)
+            {
+                yield return value;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

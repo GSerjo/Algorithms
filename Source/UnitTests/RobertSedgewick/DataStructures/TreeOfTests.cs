@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Algorithms.RobertSedgewick.Fundamentals.DataStructures;
 using Xunit;
 
@@ -35,6 +36,24 @@ namespace UnitTests.RobertSedgewick.DataStructures
                 .Put(1);
 
             Assert.Equal(1, tree.GetMinRecursive());
+        }
+
+        [Fact]
+        public void AddAllGreaterValuesToEveryNode()
+        {
+            var tree = new TreeOf();
+            tree.Put(5)
+                .Put(7)
+                .Put(3)
+                .Put(6)
+                .Put(8)
+                .Put(2)
+                .Put(4);
+
+            tree.AddAllGreaterValuesToEveryNode();
+
+            List<int> result =  tree.Select(x => x).ToList();
+            Assert.Equal(new[] { 26, 33, 35, 30, 15, 21, 8 }, result);
         }
 
         [Fact]
