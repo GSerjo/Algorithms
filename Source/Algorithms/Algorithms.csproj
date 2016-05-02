@@ -45,6 +45,7 @@
     <Compile Include="DataStructures\LinkedListStructure.cs" />
     <Compile Include="DataStructures\StackStructure.cs" />
     <Compile Include="DataStructures\StackStructureArray.cs" />
+    <Compile Include="DynamicProgramming\CoinChanger.cs" />
     <Compile Include="DynamicProgramming\LongestIncreasingSubsequence.cs" />
     <Compile Include="Exrensions\ListExtensions.cs" />
     <Compile Include="Exrensions\StringExtensions.cs" />

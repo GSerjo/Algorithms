@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Algorithms\FibonacciTests.cs" />
     <Compile Include="Algorithms\SorterTests.cs" />
+    <Compile Include="DynamicProgramming\CoinChangerTests.cs" />
     <Compile Include="DynamicProgramming\LongestIncreasingSubsequenceTests.cs" />
     <Compile Include="Exrensions\ReverseTests.cs" />
     <Compile Include="ForTests.cs" />
