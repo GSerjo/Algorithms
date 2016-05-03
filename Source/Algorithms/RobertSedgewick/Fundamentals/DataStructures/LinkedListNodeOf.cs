@@ -58,6 +58,20 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             Count++;
         }
 
+        public void Reverse()
+        {
+            Node result = null;
+            Node current = Head;
+            while (current != null)
+            {
+                Node temp = current.Next;
+                current.Next = result;
+                result = current;
+                current = temp;
+            }
+            Head = result;
+        }
+
         public T GetFirst()
         {
             if (IsEmpty)

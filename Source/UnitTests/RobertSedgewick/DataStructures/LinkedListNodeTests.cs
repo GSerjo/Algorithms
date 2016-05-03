@@ -90,5 +90,19 @@ namespace UnitTests.RobertSedgewick.DataStructures
             linkedList.RemoveLast();
             Assert.True(linkedList.IsEmpty);
         }
+
+        [Fact]
+        public void Reverse()
+        {
+            var linkedList = new LinkedListNodeOf<int>();
+
+            linkedList.AddLast(1);
+            linkedList.AddLast(2);
+            linkedList.AddLast(3);
+
+            linkedList.Reverse();
+
+            Assert.Equal(new[] { 3, 2, 1 }, linkedList.ToEnumerable());
+        }
     }
 }
