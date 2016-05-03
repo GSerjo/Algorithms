@@ -7,7 +7,7 @@ namespace UnitTests.RobertSedgewick.Sorting
         public bool IsSorted<T>(T[] array)
             where T : IComparable
         {
-            for (int i = 1; i < array.Length; i++)
+            for (var i = 1; i < array.Length; i++)
             {
                 if (array[i].CompareTo(array[i - 1]) < 0)
                 {

@@ -9,6 +9,24 @@ namespace UnitTests.RobertSedgewick.DataStructures
     public sealed class TreeOfTests
     {
         [Fact]
+        public void AddAllGreaterValuesToEveryNode()
+        {
+            var tree = new TreeOf();
+            tree.Put(5)
+                .Put(7)
+                .Put(3)
+                .Put(6)
+                .Put(8)
+                .Put(2)
+                .Put(4);
+
+            tree.AddAllGreaterValuesToEveryNode();
+
+            List<int> result = tree.Select(x => x).ToList();
+            Assert.Equal(new[] { 26, 33, 35, 30, 15, 21, 8 }, result);
+        }
+
+        [Fact]
         public void GetMin()
         {
             var tree = new TreeOf();
@@ -39,24 +57,6 @@ namespace UnitTests.RobertSedgewick.DataStructures
         }
 
         [Fact]
-        public void AddAllGreaterValuesToEveryNode()
-        {
-            var tree = new TreeOf();
-            tree.Put(5)
-                .Put(7)
-                .Put(3)
-                .Put(6)
-                .Put(8)
-                .Put(2)
-                .Put(4);
-
-            tree.AddAllGreaterValuesToEveryNode();
-
-            List<int> result =  tree.Select(x => x).ToList();
-            Assert.Equal(new[] { 26, 33, 35, 30, 15, 21, 8 }, result);
-        }
-
-        [Fact]
         public void HasPathSumBySubtract()
         {
             var tree = new TreeOf();
@@ -74,21 +74,6 @@ namespace UnitTests.RobertSedgewick.DataStructures
             result = tree.HasPathSumBySubtract(21);
             Assert.False(result);
         }
-
-        [Fact]
-        public void Sum()
-        {
-            var tree = new TreeOf();
-            tree.Put(5)
-                .Put(3)
-                .Put(2)
-                .Put(1);
-
-            int result =  tree.Sum();
-
-            Assert.Equal(11, result);
-        }
-
 
         [Fact]
         public void HasPathSumBySum()
@@ -124,6 +109,20 @@ namespace UnitTests.RobertSedgewick.DataStructures
         }
 
         [Fact]
+        public void Postorder()
+        {
+            var tree = new TreeOf();
+            tree.Put(5)
+                .Put(7)
+                .Put(4);
+
+            var result = new List<int>();
+            tree.Postorder(result.Add);
+
+            Assert.Equal(new[] { 4, 7, 5 }, result);
+        }
+
+        [Fact]
         public void Preoder()
         {
             var tree = new TreeOf();
@@ -135,6 +134,27 @@ namespace UnitTests.RobertSedgewick.DataStructures
             tree.Preoder(result.Add);
 
             Assert.Equal(new[] { 5, 4, 7 }, result);
+        }
+
+        [Fact]
+        public void Sum()
+        {
+            var tree = new TreeOf();
+            tree.Put(5)
+                .Put(3)
+                .Put(2)
+                .Put(1);
+
+            int result = tree.Sum();
+
+            Assert.Equal(11, result);
+        }
+
+        [Fact]
+        public void TrappingRainWater()
+        {
+            int result = TrappingRainWater(new[] { 3, 0, 0, 2, 0, 4 });
+            Assert.Equal(10, result);
         }
 
         [Fact]
@@ -156,27 +176,6 @@ namespace UnitTests.RobertSedgewick.DataStructures
                 { 0, 18 }, { -1, 4 }, { -2, 3 }, { 1, 8 }, { 2, 9 }
             };
             Assert.Equal(expected, result);
-        }
-
-        [Fact]
-        public void Postorder()
-        {
-            var tree = new TreeOf();
-            tree.Put(5)
-                .Put(7)
-                .Put(4);
-
-            var result = new List<int>();
-            tree.Postorder(result.Add);
-
-            Assert.Equal(new[] { 4, 7, 5 }, result);
-        }
-
-        [Fact]
-        public void TrappingRainWater()
-        {
-            int result = TrappingRainWater(new[] { 3, 0, 0, 2, 0, 4 });
-            Assert.Equal(10, result);
         }
 
         private static int TrappingRainWater(int[] array)

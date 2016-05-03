@@ -58,6 +58,7 @@ namespace UnitTests
             return true;
         }
 
+
         public sealed class Node : IEnumerable<int>
         {
             public Node Left { get; set; }

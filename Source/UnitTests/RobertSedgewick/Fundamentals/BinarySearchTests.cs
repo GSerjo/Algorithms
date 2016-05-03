@@ -6,13 +6,6 @@ namespace UnitTests.RobertSedgewick.Fundamentals
     public sealed class BinarySearchTests
     {
         [Fact]
-        public void BinarySearch_Null_MinusOne()
-        {
-            int result = BinarySearch.Search(1, null);
-            Assert.Equal(-1, result);
-        }
-
-        [Fact]
         public void BinarySearch_KeyExists_Ok()
         {
             var data = new[] { 1, 2, 3, 4, 5, 6 };
@@ -29,6 +22,13 @@ namespace UnitTests.RobertSedgewick.Fundamentals
 
             int result = BinarySearch.Search(33, data);
 
+            Assert.Equal(-1, result);
+        }
+
+        [Fact]
+        public void BinarySearch_Null_MinusOne()
+        {
+            int result = BinarySearch.Search(1, null);
             Assert.Equal(-1, result);
         }
     }
