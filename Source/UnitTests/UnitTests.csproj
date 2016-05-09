@@ -73,6 +73,7 @@
     <Compile Include="DynamicProgramming\CoinChangerTests.cs" />
     <Compile Include="DynamicProgramming\LongestIncreasingSubsequenceTests.cs" />
     <Compile Include="Exrensions\ReverseTests.cs" />
+    <Compile Include="FindUniqueValue.cs" />
     <Compile Include="ForTests.cs" />
     <Compile Include="Interview\Chapter1QuestionsTests.cs" />
     <Compile Include="NodeEqualTests.cs" />
