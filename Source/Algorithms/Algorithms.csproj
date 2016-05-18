@@ -59,6 +59,7 @@
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\GraphCyclePaths.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\LinkedListNodeOf.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\MaxPriorityQueue.cs" />
+    <Compile Include="RobertSedgewick\Fundamentals\DataStructures\QueueNodeOf.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\StackArrayOf.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\StackNodeOf.cs" />
     <Compile Include="RobertSedgewick\Fundamentals\DataStructures\SymbolTable.cs" />

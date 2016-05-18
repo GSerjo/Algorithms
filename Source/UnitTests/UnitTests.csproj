@@ -82,6 +82,7 @@
     <Compile Include="RobertSedgewick\DataStructures\GraphCyclePathsTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\LinkedListNodeTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\MaxPriorityQueueTests.cs" />
+    <Compile Include="RobertSedgewick\DataStructures\QueueNodeOfTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\StackArrayOfTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\StackNodeOfTests.cs" />
     <Compile Include="RobertSedgewick\DataStructures\SymbolTableTests.cs" />
