@@ -1,4 +1,6 @@
-﻿using Algorithms.RobertSedgewick.Fundamentals.DataStructures;
+﻿using System;
+using System.Collections.Generic;
+using Algorithms.RobertSedgewick.Fundamentals.DataStructures;
 using Xunit;
 
 namespace UnitTests.RobertSedgewick.DataStructures
@@ -103,6 +105,68 @@ namespace UnitTests.RobertSedgewick.DataStructures
             linkedList.Reverse();
 
             Assert.Equal(new[] { 3, 2, 1 }, linkedList.ToEnumerable());
+        }
+
+        [Fact]
+        public void Addition()
+        {
+            var first = new LinkedList<int>();
+            first.AddFirst(7);
+            first.AddFirst(0);
+            first.AddFirst(0);
+            first.AddFirst(1);
+
+            var secod = new LinkedList<int>();
+            secod.AddFirst(3);
+            secod.AddFirst(9);
+
+            LinkedList<int> result = Addition(first, secod);
+
+            Assert.Equal(new[] { 1, 1, 0, 0 }, result);
+        }
+
+        private static LinkedList<int> Addition(LinkedList<int> first, LinkedList<int> second)
+        {
+            int leadingZeros = first.Count - second.Count;
+
+            if (leadingZeros > 0)
+            {
+                AddLeadingZeros(second, leadingZeros);
+            }
+            else if (leadingZeros < 0)
+            {
+                AddLeadingZeros(first, Math.Abs(leadingZeros));
+            }
+            var result = new LinkedList<int>();
+            var memory = 0;
+
+            LinkedListNode<int> current1 = first.Last;
+            LinkedListNode<int> current2 = second.Last;
+            while (current1 != null && current2 != null)
+            {
+                int additon = current1.Value + current2.Value + memory;
+                if (additon >= 10)
+                {
+                    additon = additon % 10;
+                    memory = 1;
+                }
+                else
+                {
+                    memory = 0;
+                }
+                result.AddFirst(additon);
+                current1 = current1.Previous;
+                current2 = current2.Previous;
+            }
+            return result;
+        }
+
+        private static void AddLeadingZeros(LinkedList<int> value, int zeroCount)
+        {
+            for (var i = 0; i < zeroCount; i++)
+            {
+                value.AddFirst(0);
+            }
         }
     }
 }
