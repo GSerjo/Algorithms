@@ -82,6 +82,24 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             return Sum(_root);
         }
 
+        public bool IsBinarySearchTree()
+        {
+            return IsBinarySearchTree(_root, int.MinValue, int.MaxValue);
+        }
+
+        private static bool IsBinarySearchTree(Node node, int min, int max)
+        {
+            if (node == null)
+            {
+                return true;
+            }
+            if (node.Value < min || node.Value > max)
+            {
+                return false;
+            }
+            return IsBinarySearchTree(node.Left, min, node.Value) && IsBinarySearchTree(node.Right, node.Value, max);
+        }
+
         public Dictionary<int, int> VerticalSum()
         {
             var result = new Dictionary<int, int>();

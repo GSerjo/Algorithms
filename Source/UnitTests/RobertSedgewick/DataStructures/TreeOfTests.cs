@@ -123,6 +123,22 @@ namespace UnitTests.RobertSedgewick.DataStructures
         }
 
         [Fact]
+        public void IsBinarySearchTree()
+        {
+            var tree = new TreeOf();
+            tree.Put(20)
+                .Put(30)
+                .Put(25)
+                .Put(40)
+                .Put(10)
+                .Put(8)
+                .Put(15);
+
+            bool result = tree.IsBinarySearchTree();
+            Assert.True(result);
+        }
+
+        [Fact]
         public void Preoder()
         {
             var tree = new TreeOf();
