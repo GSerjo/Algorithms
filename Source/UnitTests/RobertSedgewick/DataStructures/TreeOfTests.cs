@@ -139,6 +139,22 @@ namespace UnitTests.RobertSedgewick.DataStructures
         }
 
         [Fact]
+        public void BottomView()
+        {
+            var tree = new TreeOf();
+            tree.Put(20)
+                .Put(30)
+                .Put(25)
+                .Put(40)
+                .Put(10)
+                .Put(8)
+                .Put(15);
+
+            List<int> result = tree.BottomView();
+            Assert.Equal(new[] { 25, 10, 8, 30, 40 }, result);
+        }
+
+        [Fact]
         public void FindDeeppest()
         {
             var tree = new TreeOf();

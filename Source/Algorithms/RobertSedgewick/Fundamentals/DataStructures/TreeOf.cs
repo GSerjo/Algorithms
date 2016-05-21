@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
 {
     public sealed class TreeOf : IEnumerable<int>
     {
+        private readonly Dictionary<int, int> _bottomView = new Dictionary<int, int>();
         private int _deeppestLevel;
         private Node _root;
 
@@ -26,6 +28,12 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
         {
             var sum = 0;
             AddAllGreaterValuesToEveryNode(_root, ref sum);
+        }
+
+        public List<int> BottomView()
+        {
+            BottomView(_root, 0);
+            return _bottomView.Values.ToList();
         }
 
         public int FindDeeppest()
@@ -112,6 +120,17 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             sum = sum + node.Value;
             node.Value = sum;
             AddAllGreaterValuesToEveryNode(node.Left, ref sum);
+        }
+
+        private void BottomView(Node node, int verticalLevel)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            _bottomView[verticalLevel] = node.Value;
+            BottomView(node.Left, verticalLevel - 1);
+            BottomView(node.Right, verticalLevel + 1);
         }
 
         private void FindDeepest(Node node, int level)
