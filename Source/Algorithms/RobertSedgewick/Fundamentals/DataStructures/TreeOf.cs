@@ -6,7 +6,33 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
 {
     public sealed class TreeOf : IEnumerable<int>
     {
+        private int _deeppestLevel;
         private Node _root;
+
+        public IEnumerator<int> GetEnumerator()
+        {
+            foreach (int value in _root)
+            {
+                yield return value;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public void AddAllGreaterValuesToEveryNode()
+        {
+            var sum = 0;
+            AddAllGreaterValuesToEveryNode(_root, ref sum);
+        }
+
+        public int FindDeeppest()
+        {
+            FindDeepest(_root, 0);
+            return _deeppestLevel;
+        }
 
         public int GetMin()
         {
@@ -28,24 +54,6 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             return GetMinRecursive(_root);
         }
 
-        public void AddAllGreaterValuesToEveryNode()
-        {
-            var sum = 0;
-            AddAllGreaterValuesToEveryNode(_root, ref sum);
-        }
-
-        private static void AddAllGreaterValuesToEveryNode(Node node, ref int sum)
-        {
-            if (node == null)
-            {
-                return;
-            }
-            AddAllGreaterValuesToEveryNode(node.Right, ref sum);
-            sum = sum + node.Value;
-            node.Value = sum;
-            AddAllGreaterValuesToEveryNode(node.Left, ref sum);
-        }
-
         public bool HasPathSumBySubtract(int sum)
         {
             return HasPathSumBySubtract(_root, sum);
@@ -59,6 +67,11 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
         public void Inorder(Action<int> action)
         {
             Inorder(_root, action);
+        }
+
+        public bool IsBinarySearchTree()
+        {
+            return IsBinarySearchTree(_root, int.MinValue, int.MaxValue);
         }
 
         public void Postorder(Action<int> action)
@@ -82,29 +95,37 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             return Sum(_root);
         }
 
-        public bool IsBinarySearchTree()
-        {
-            return IsBinarySearchTree(_root, int.MinValue, int.MaxValue);
-        }
-
-        private static bool IsBinarySearchTree(Node node, int min, int max)
-        {
-            if (node == null)
-            {
-                return true;
-            }
-            if (node.Value < min || node.Value > max)
-            {
-                return false;
-            }
-            return IsBinarySearchTree(node.Left, min, node.Value) && IsBinarySearchTree(node.Right, node.Value, max);
-        }
-
         public Dictionary<int, int> VerticalSum()
         {
             var result = new Dictionary<int, int>();
             VerticalSum(_root, 0, result);
             return result;
+        }
+
+        private static void AddAllGreaterValuesToEveryNode(Node node, ref int sum)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            AddAllGreaterValuesToEveryNode(node.Right, ref sum);
+            sum = sum + node.Value;
+            node.Value = sum;
+            AddAllGreaterValuesToEveryNode(node.Left, ref sum);
+        }
+
+        private void FindDeepest(Node node, int level)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            if (level > _deeppestLevel)
+            {
+                _deeppestLevel = level;
+            }
+            FindDeepest(node.Left, level + 1);
+            FindDeepest(node.Right, level + 1);
         }
 
         private static int GetMinRecursive(Node node)
@@ -157,6 +178,19 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             Inorder(node.Left, action);
             action(node.Value);
             Inorder(node.Right, action);
+        }
+
+        private static bool IsBinarySearchTree(Node node, int min, int max)
+        {
+            if (node == null)
+            {
+                return true;
+            }
+            if (node.Value < min || node.Value > max)
+            {
+                return false;
+            }
+            return IsBinarySearchTree(node.Left, min, node.Value) && IsBinarySearchTree(node.Right, node.Value, max);
         }
 
         private static void Postorder(Node node, Action<int> action)
@@ -262,20 +296,6 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             {
                 return GetEnumerator();
             }
-        }
-
-
-        public IEnumerator<int> GetEnumerator()
-        {
-            foreach (int value in _root)
-            {
-                yield return value;
-            }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
         }
     }
 }
