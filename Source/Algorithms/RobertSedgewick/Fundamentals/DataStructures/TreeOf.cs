@@ -36,6 +36,11 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             return _bottomView.Values.ToList();
         }
 
+        public void DepthFirstSearchStack(Action<int> action)
+        {
+            DepthFirstSearchStack(_root, action);
+        }
+
         public int FindDeeppest()
         {
             FindDeepest(_root, 0);
@@ -131,6 +136,28 @@ namespace Algorithms.RobertSedgewick.Fundamentals.DataStructures
             _bottomView[verticalLevel] = node.Value;
             BottomView(node.Left, verticalLevel - 1);
             BottomView(node.Right, verticalLevel + 1);
+        }
+
+        private static void DepthFirstSearchStack(Node node, Action<int> action)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            var stack = new Stack<Node>();
+            stack.Push(node);
+            while (stack.Count != 0)
+            {
+                Node current = stack.Pop();
+                if (current == null)
+                {
+                    continue;
+                }
+                action(current.Value);
+
+                stack.Push(current.Left);
+                stack.Push(current.Right);
+            }
         }
 
         private void FindDeepest(Node node, int level)
