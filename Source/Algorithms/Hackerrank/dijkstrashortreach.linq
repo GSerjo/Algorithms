@@ -23,16 +23,32 @@ void Main()
 
 private static List<int> CalculateShortPath(int startPoint, Graph graph)
 {
-	for (int i = 0; i < graph.VertexCount; i++)
+	var distTo = new int[graph.VertexCount + 1];
+	var edgeTo = new Edge[graph.VertexCount + 1];
+	
+	for (int i = 1; i <= graph.VertexCount; i++)
 	{
-		
+		distTo[i] = int.MaxValue;
 	}
+	distTo[startPoint] = 0;
+	
 	var queue = new SortedDictionary<int, int>();
 	queue.Add(startPoint, 0);
 	
 	while (queue.Count != 0)
 	{
-		var pair = queue.Values.M.Min();
+		var pair = queue.Values.Min();
+		
+		foreach (Edge edge in graph.Adjacent(0))
+		{
+			var to = edge.To;
+			
+			if(distTo[to] > distTo[edge.From] + edge.Length)
+			{
+				distTo[to] = distTo[edge.From] + edge.Length;
+				edgeTo[to] = edge;
+			}
+		}
 		
 	}
 	return new List<int>();
