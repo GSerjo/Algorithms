@@ -24,8 +24,11 @@ private static bool IsAnagram(string first, string second)
 		return false;
 	}
 	
-	var array1 = first.ToCharArray().OrderBy(x=>x).ToArray();
-	var array2 = second.ToCharArray().OrderBy(x=>x).ToArray();
+	var array1 = first.ToCharArray();
+	var array2 = second.ToCharArray();
+	
+	Array.Sort(array1);
+	Array.Sort(array2);
 	
 	for (int i = 0; i < array1.Length; i++)
 	{
