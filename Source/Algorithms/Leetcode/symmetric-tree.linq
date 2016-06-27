@@ -2,6 +2,24 @@
 
 // https://leetcode.com/problems/symmetric-tree/
 
+/*
+
+TRUE
+    1
+   / \
+  2   2
+ / \ / \
+3  4 4  3
+
+FALSE
+    1
+   / \
+  2   2
+   \   \
+   3    3
+
+*/
+
 void Main()
 {
 	
