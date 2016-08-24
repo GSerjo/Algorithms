@@ -17,6 +17,24 @@ void Main()
 	
 	Succesor(root.Left.Right).Dump();
 	Succesor(root.Left.Right.Right).Dump();
+
+	Predecessor(root).Dump();
+	Predecessor(root.Left.Right.Right.Left).Dump();
+}
+
+private static int Predecessor(Node node)
+{
+	if(node != null && node.Left != null)
+	{
+		return Max(node.Left);
+	}
+	var node2 = node.Parent;
+	while(node2 != null && node == node2.Left)
+	{
+		node = node2;
+		node2 = node.Parent;
+	}
+	return node2.Value;
 }
 
 // next > value
