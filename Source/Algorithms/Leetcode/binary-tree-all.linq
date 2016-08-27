@@ -38,7 +38,30 @@ void Main()
 
 	SearchIterative(root, 13).Value.Dump();
 	(SearchIterative(root, 33) == null).Dump();
+	
+	root = InsertRecursive(root, 16);
 
+}
+
+private Node InsertRecursive(Node root, int value)
+{
+	if(root == null)
+	{
+		return new Node(value);
+	}
+	if(value > root.Value)
+	{
+		var right = InsertRecursive(root.Right, value);
+		right.Parent = root;
+		root.Right = right;
+	}
+	else if(value < root.Value)
+	{
+		var left = InsertRecursive(root.Left, value);
+		left.Parent = root;
+		root.Left = left;
+	}
+	return root;
 }
 
 private Node SearchRecursive(Node root, int value)
