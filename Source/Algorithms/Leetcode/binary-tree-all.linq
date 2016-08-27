@@ -1,5 +1,17 @@
 <Query Kind="Program" />
 
+/*
+	   15
+	  /  \
+     6    18
+    / \
+   3   7
+        \
+	     13
+	    /
+	   9 
+*/
+
 void Main()
 {
 	var root = new Node(15);
@@ -20,6 +32,26 @@ void Main()
 
 	Predecessor(root).Dump();
 	Predecessor(root.Left.Right.Right.Left).Dump();
+	
+	SearchRecursive(root, 13).Value.Dump();
+	(SearchRecursive(root, 33) == null).Dump();
+}
+
+private Node SearchRecursive(Node root, int value)
+{
+	if(root == null)
+	{
+		return null;
+	}
+	if(root.Value == value)
+	{
+		return root;
+	}
+	if(value > root.Value)
+	{
+		return SearchRecursive(root.Right, value);
+	}
+	return SearchRecursive(root.Left, value);
 }
 
 private static int Predecessor(Node node)
