@@ -35,6 +35,10 @@ void Main()
 	
 	SearchRecursive(root, 13).Value.Dump();
 	(SearchRecursive(root, 33) == null).Dump();
+
+	SearchIterative(root, 13).Value.Dump();
+	(SearchIterative(root, 33) == null).Dump();
+
 }
 
 private Node SearchRecursive(Node root, int value)
@@ -52,6 +56,30 @@ private Node SearchRecursive(Node root, int value)
 		return SearchRecursive(root.Right, value);
 	}
 	return SearchRecursive(root.Left, value);
+}
+
+private Node SearchIterative(Node root, int value)
+{
+	if(root == null)
+	{
+		return null;
+	}
+	while(root != null)
+	{
+		if(root.Value == value)
+		{
+			return root;
+		}
+		if(value > root.Value)
+		{
+			root = root.Right;
+		}
+		else
+		{
+			root = root.Left;
+		}
+	}
+	return null;
 }
 
 private static int Predecessor(Node node)
