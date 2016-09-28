@@ -4,10 +4,13 @@
 
 void Main()
 {
-	var input = new Input();
-	var friends = int.Parse(input.Next().Split(' ')[1]);
-	var prices = input.Next().Split(' ').Select(int.Parse).OrderByDescending(x=>x).ToList();
-	
+//	var input = new Input();
+//	var friends = int.Parse(input.Next().Split(' ')[1]);
+//	var prices = input.Next().Split(' ').Select(int.Parse).OrderByDescending(x=>x).ToList();
+
+	var friends = int.Parse(Console.ReadLine().Split(' ')[1]);
+	var prices = Console.ReadLine().Split(' ').Select(int.Parse).OrderByDescending(x => x).ToList();
+
 	var purchasedFlowers = 0;
 	var result = 0; 
 	for (int i = 0; i < prices.Count; i++)
