@@ -17,7 +17,7 @@ private class Input
 		return _data[index];
 	}
 
-	public string Next()
+	public string ReadLine()
 	{
 		_lastIndex++;
 		return _data[_lastIndex];
