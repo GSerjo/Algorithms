@@ -15,7 +15,6 @@ void Main()
 //	var word = input.ReadLine();
 	var word = Console.ReadLine();
 	
-	var zeros = 0;
 	var ones = 0;
 	var result = new StringBuilder();
 	for (int i = 0; i < length; i++)
@@ -23,23 +22,15 @@ void Main()
 		if(i > shift - 1)
 		{
 			var remove = result[i - shift];
-			if (IsZero(remove))
-			{
-				zeros--;
-			}
-			else
+			if (!IsZero(remove))
 			{
 				ones--;
 			}
 		}
-		var item = XorValue(zeros, ones, word[i]);
+		var item = XorValue(ones, word[i]);
 		result.Append(item);
 		
-		if(IsZero(item))
-		{
-			zeros++;
-		}
-		else
+		if(!IsZero(item))
 		{
 			ones++;
 		}
@@ -47,16 +38,15 @@ void Main()
 	Console.WriteLine(result.ToString());
 }
 
-private bool IsZero(char value)
+private static bool IsZero(char value)
 {
 	return '0' == value;
 }
 
-private char XorValue(int zeros, int ones, char targetXor)
+private static char XorValue(int ones, char targetXor)
 {
-	var hasZero = zeros%2 != 0;
 	var hasOne = ones%2 != 0;
-	if(!hasOne && !hasOne)
+	if(!hasOne)
 	{
 		return targetXor;
 	}
