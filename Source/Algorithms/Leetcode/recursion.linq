@@ -6,7 +6,7 @@ void Main()
 {
 	Sum(new[] {1, 2, 3}).Dump();
 	Count(new[] {1, 2, 3}).Dump();
-	Greatest(new[] {1, 4, 3}).Dump();
+	Max(new[] {1, 4, 3}).Dump();
 }
 
 private static int Sum(int[] array)
@@ -36,7 +36,7 @@ private static int Count(int[] array)
 	return 1 + Count(array.Skip(1).ToArray());
 }
 
-private static int Greatest(int[] array)
+private static int Max(int[] array)
 {
 	if (array == null || array.Length == 0)
 	{
@@ -50,5 +50,5 @@ private static int Greatest(int[] array)
 	{
 		return Math.Max(array[0], array[1]);
 	}
-	return Math.Max(array[0], Greatest(array.Skip(1).ToArray()));
+	return Math.Max(array[0], Max(array.Skip(1).ToArray()));
 }
