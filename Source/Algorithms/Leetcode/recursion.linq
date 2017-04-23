@@ -1,6 +1,6 @@
 <Query Kind="Program" />
 
-// recursion
+// recursion, divide and conquer
 
 void Main()
 {
