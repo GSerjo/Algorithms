@@ -4,7 +4,7 @@
 
 void Main()
 {
-	var stack = new ArrayStackOf<int>(5);
+	var stack = new ArrayStackOf<int>();
 	stack.IsEmpty.Dump();
 	
 	stack.Push(0);
@@ -23,20 +23,15 @@ void Main()
 private class ArrayStackOf<T>
 {
 	private int _count = 0;
-	private T[] _array;
-	
-	public ArrayStackOf(int count)
-	{
-		_array = new T[count];
-	}
+	private T[] _array = new T[1];
 	
 	public bool IsEmpty => _count == 0;
 	
 	public void Push(T value)
 	{
-		if(_array.Length == _count)
+		if (_count == _array.Length)
 		{
-			throw new IndexOutOfRangeException();
+			Resize(2 * _array.Length);
 		}
 		_array[_count++] = value;
 	}
@@ -49,7 +44,20 @@ private class ArrayStackOf<T>
 		}
 		var result = _array[--_count];
 		_array[_count] = default(T);
+		if (_count == _array.Length / 4)
+		{
+			Resize(_array.Length/2);
+		}
 		return result;
 	}
+	
+	private void Resize(int length)
+	{
+		var newArray = new T[length];
+		for (int i = 0; i < _array.Length; i++)
+		{
+			newArray[i] = _array[i];
+		}
+		_array = newArray;
+	}
 }
-
