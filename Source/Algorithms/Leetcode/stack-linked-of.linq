@@ -38,8 +38,17 @@ private class LinkedStackOf<T>
 		_head = new Node { Next = temp, Value = value };
 		_count++;
 	}
-	
-	public T Pop()
+
+	public T Peek()
+	{
+		if (IsEmpty)
+		{
+			throw new InvalidOperationException();
+		}
+		return _head.Value;
+	}
+
+		public T Pop()
 	{
 		if (IsEmpty)
 		{

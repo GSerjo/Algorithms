@@ -51,6 +51,15 @@ private class ArrayStackOf<T>
 		return result;
 	}
 	
+	public T Peek()
+	{
+		if (IsEmpty)
+		{
+			throw new InvalidOperationException();
+		}
+		return _array[_count - 1];
+	}
+	
 	private void Resize(int length)
 	{
 		var newArray = new T[length];
