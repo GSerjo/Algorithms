@@ -36,7 +36,6 @@ private static IList<string> BinaryTreePaths(TreeNode root)
 	{
 		return new List<string>();
 	}
-	
 	var result = new List<string>();
 	BinaryTreePaths(root, "", result);
 	return result;
