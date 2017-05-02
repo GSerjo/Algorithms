@@ -2,9 +2,9 @@
 
 /*
 
-https://leetcode.com/problems/binary-tree-level-order-traversal/
+https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
 
-Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
+Given a binary tree, return the bottom-up level order traversal of its nodes' values. (ie, from left to right, level by level from leaf to root).
 
 For example:
 Given binary tree [3,9,20,null,null,15,7],
@@ -13,11 +13,11 @@ Given binary tree [3,9,20,null,null,15,7],
   9  20
     /  \
    15   7
-return its level order traversal as:
+return its bottom-up level order traversal as:
 [
-  [3],
+  [15,7],
   [9,20],
-  [15,7]
+  [3]
 ]
 
 */
@@ -29,7 +29,7 @@ void Main()
 	tree.right = new TreeNode(20);
 	tree.right.right = new TreeNode(7);
 	tree.right.left = new TreeNode(15);
-	
+
 	LevelOrder(tree).Dump();
 }
 
@@ -37,7 +37,7 @@ private static IList<IList<int>> LevelOrder(TreeNode root)
 {
 	var result = new List<IList<int>>();
 	LevelOrder(root, 0, result);
-	return result;	
+	return result;
 }
 
 private static void LevelOrder(TreeNode node, int level, List<IList<int>> result)
@@ -48,11 +48,11 @@ private static void LevelOrder(TreeNode node, int level, List<IList<int>> result
 	}
 	if (level >= result.Count)
 	{
-		result.Add(new List<int>{ node.val });
+		result.Insert(0, new List<int> { node.val });
 	}
 	else
 	{
-		result[level].Add(node.val);
+		result[result.Count - level - 1].Add(node.val);
 	}
 	LevelOrder(node.left, level + 1, result);
 	LevelOrder(node.right, level + 1, result);
