@@ -59,17 +59,9 @@ private static bool IsSymmetric2(TreeNode root)
 
 private static bool IsSymmetric(TreeNode left, TreeNode right)
 {
-	if (left == null && right == null)
+	if (left == null || right == null)
 	{
-		return true;
-	}
-	if (left == null && right != null)
-	{
-		return false;
-	}
-	if (right == null && left != null)
-	{
-		return false;
+		return left == right;
 	}
 	if (left.val != right.val)
 	{
@@ -97,11 +89,7 @@ private static bool IsSymmetric(TreeNode root)
 		{
 			continue;
 		}
-		if (left == null && right != null)
-		{
-			return false;
-		}
-		if (right == null && left != null)
+		if (left == null || right == null)
 		{
 			return false;
 		}
