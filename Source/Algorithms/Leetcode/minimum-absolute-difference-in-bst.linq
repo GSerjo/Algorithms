@@ -29,23 +29,34 @@ void Main()
 
 }
 
-private static int GetMinimumDifference(TreeNode root)
-{
-	if (root == null)
-	{
-		return 0;
-	}
-}
 
-
-private static int GetMinimumDifference(TreeNode node, int[] result)
+public static int GetMinimumDifference(TreeNode node)
 {
 	if (node == null)
 	{
 		return 0;
 	}
-	
+	return GetMinimumDifference(node, new int?[] {int.MaxValue, null});
 }
+
+public static int GetMinimumDifference(TreeNode node, int?[] result)
+{
+	if (node == null)
+	{
+		return result[0].Value;
+	}
+	GetMinimumDifference(node.left, result);
+
+	if (result[1].HasValue)
+	{
+		result[0] = Math.Min(result[0].Value, node.val - result[1].Value);
+	}
+	
+	result[1] = node.val;
+	GetMinimumDifference(node.right, result);
+	return result[0].Value;
+}
+
 
 public class TreeNode
 {
