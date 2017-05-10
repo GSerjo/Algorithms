@@ -50,3 +50,26 @@ private static IList<int> FindDisappearedNumbers(int[] nums)
 	}
 	return result;
 }
+
+public List<int> FindDisappearedNumbers2(int[] nums)
+{
+	var result = new List<int>();
+
+	for (int i = 0; i < nums.Length; i++)
+	{
+		int value = Math.Abs(nums[i]) - 1;
+		if (nums[value] > 0)
+		{
+			nums[value] = -nums[value];
+		}
+	}
+
+	for (int i = 0; i < nums.Length; i++)
+	{
+		if (nums[i] > 0)
+		{
+			result.Add(i + 1);
+		}
+	}
+	return result;
+}
