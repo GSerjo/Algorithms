@@ -6,6 +6,7 @@ private static Random _random = new Random();
 
 void Main()
 {
+	// The array should be even
 	Sort(new List<int> {1, 0, 3, 2}).Dump();
 }
 
