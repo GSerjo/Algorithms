@@ -16,8 +16,9 @@ You may assume no duplicate exists in the array.
 
 void Main()
 {
-	FindMin(new int[] {4, 5, 6, 7, 0, 1, 2}).Dump();
-	FindMin(new int[] {6, 7, 0, 1, 2, 4, 5}).Dump();
+	//FindMin(new int[] {4, 5, 6, 7, 0, 1, 2}).Dump();
+	//FindMin(new int[] {6, 7, 0, 1, 2, 4, 5}).Dump();
+	FindMin(new int[] {2, 1, 0}).Dump();
 }
 
 private static int FindMin(int[] nums)
@@ -39,14 +40,21 @@ private static int FindMin(int[] nums)
 		{
 			return nums[lo];
 		}
-		var mid = lo + (hi - lo) / 2;
+		var mid = lo + (hi - lo)/ 2;
 		if (nums[mid] > nums[lo])
 		{
 			lo = mid + 1;
 		}
 		else
 		{
-			hi = mid - 1;
+			if (nums[mid] > nums[hi])
+			{
+				lo = mid + 1;
+			}
+			else
+			{
+				hi = mid;
+			}
 		}
 	}
 	return nums[lo];	
