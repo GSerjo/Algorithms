@@ -5,6 +5,7 @@ public class Percolation {
     private int length;
     private int topPoint;
     private int bottomPoint;
+    private int numberOfOpenSites = 0;
     private boolean[][] opened;
     private WeightedQuickUnionUF percolateUnion;
     private WeightedQuickUnionUF fullPathUnion;
@@ -31,6 +32,8 @@ public class Percolation {
         }
 
         opened[row - 1][col - 1] = true;
+        numberOfOpenSites++;
+
         if (isFirstRow(row)) {
             int p = col - 1;
             percolateUnion.union(p, topPoint);
@@ -75,6 +78,10 @@ public class Percolation {
             return fullPathUnion.connected(p, topPoint);
         }
         throw new IndexOutOfBoundsException();
+    }
+
+    public int numberOfOpenSites(){
+        return numberOfOpenSites;
     }
 
     public boolean percolates() {

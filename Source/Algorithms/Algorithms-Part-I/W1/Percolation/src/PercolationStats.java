@@ -20,17 +20,16 @@ public class PercolationStats {
     }
 
     private double estimate(int gridSize){
-        int openSites = 0;
         Percolation percolation = new Percolation(gridSize);
+
         while (!percolation.percolates()) {
             int row = StdRandom.uniform(1, gridSize + 1);
             int col = StdRandom.uniform(1, gridSize + 1);
             if (!percolation.isOpen(row, col) && !percolation.isFull(row, col)) {
                 percolation.open(row, col);
-                openSites++;
             }
         }
-        return (double) openSites / (gridSize * gridSize);
+        return (double) percolation.numberOfOpenSites() / (gridSize * gridSize);
     }
 
     public double mean() {
