@@ -9,11 +9,11 @@ public class Percolation {
     private WeightedQuickUnionUF percolateUnion;
     private WeightedQuickUnionUF fullPathUnion;
 
-    public Percolation(int N) {
-        if (N <= 0) {
-            throw new IllegalArgumentException("N <= 0");
+    public Percolation(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("n <= 0");
         }
-        length = N;
+        length = n;
         opened = new boolean[length][length];
         percolateUnion = new WeightedQuickUnionUF(length * length + 2);
         fullPathUnion = new WeightedQuickUnionUF(length * length + 1);
@@ -21,57 +21,57 @@ public class Percolation {
         bottomPoint = topPoint + 1;
     }
 
-    public void open(int i, int j) {
-        if (!areIndexesValid(i, j)) {
+    public void open(int row, int col) {
+        if (!areIndexesValid(row, col)) {
             throw new IndexOutOfBoundsException();
         }
 
-        if(opened[i - 1][j - 1]){
+        if(opened[row - 1][col - 1]){
             return;
         }
 
-        opened[i - 1][j - 1] = true;
-        if (isFirstRow(i)) {
-            int p = j - 1;
+        opened[row - 1][col - 1] = true;
+        if (isFirstRow(row)) {
+            int p = col - 1;
             percolateUnion.union(p, topPoint);
             fullPathUnion.union(p, topPoint);
         }
-        int p = (i - 1) * length + j - 1;
-        if (isLastRow(i)){
+        int p = (row - 1) * length + col - 1;
+        if (isLastRow(row)){
             percolateUnion.union(p, bottomPoint);
         }
-        if (i > 1 && isOpenCore(i - 1, j)) {
-            int q = (i - 2) * length + j - 1;
+        if (row > 1 && isOpenCore(row - 1, col)) {
+            int q = (row - 2) * length + col - 1;
             percolateUnion.union(p, q);
             fullPathUnion.union(p, q);
         }
-        if (i < length && isOpenCore(i + 1, j)) {
-            int q = i * length + j - 1;
+        if (row < length && isOpenCore(row + 1, col)) {
+            int q = row * length + col - 1;
             percolateUnion.union(p, q);
             fullPathUnion.union(p, q);
         }
-        if (j > 1 && isOpenCore(i, j - 1)) {
-            int q = (i - 1) * length + j - 2;
+        if (col > 1 && isOpenCore(row, col - 1)) {
+            int q = (row - 1) * length + col - 2;
             percolateUnion.union(p, q);
             fullPathUnion.union(p, q);
         }
-        if (j < length && isOpenCore(i, j + 1)) {
-            int q = (i - 1) * length + j;
+        if (col < length && isOpenCore(row, col + 1)) {
+            int q = (row - 1) * length + col;
             percolateUnion.union(p, q);
             fullPathUnion.union(p, q);
         }
     }
 
-    public boolean isOpen(int i, int j) {
-        if (areIndexesValid(i, j)) {
-            return isOpenCore(i, j);
+    public boolean isOpen(int row, int col) {
+        if (areIndexesValid(row, col)) {
+            return isOpenCore(row, col);
         }
         throw new IndexOutOfBoundsException();
     }
 
-    public boolean isFull(int i, int j) {
-        if (areIndexesValid(i, j)) {
-            int p = (i - 1) * length + j - 1;
+    public boolean isFull(int row, int col) {
+        if (areIndexesValid(row, col)) {
+            int p = (row - 1) * length + col - 1;
             return fullPathUnion.connected(p, topPoint);
         }
         throw new IndexOutOfBoundsException();
@@ -81,20 +81,20 @@ public class Percolation {
         return percolateUnion.connected(topPoint, bottomPoint);
     }
 
-    private boolean isOpenCore(int i, int j){
-        return opened[i - 1][j - 1];
+    private boolean isOpenCore(int row, int col){
+        return opened[row - 1][col - 1];
     }
 
-    private boolean isFirstRow(int i){
-        return i == 1;
+    private boolean isFirstRow(int row){
+        return row == 1;
     }
 
-    private boolean isLastRow(int i){
-        return  i == length;
+    private boolean isLastRow(int row){
+        return  row == length;
     }
 
-    private boolean areIndexesValid(int i, int j) {
-        if (i < 1 || i > length || j < 1 || j > length) {
+    private boolean areIndexesValid(int row, int column) {
+        if (row < 1 || row > length || column < 1 || column > length) {
             return false;
         }
         return true;
