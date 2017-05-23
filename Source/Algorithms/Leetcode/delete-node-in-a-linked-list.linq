@@ -12,7 +12,11 @@ Supposed the linked list is 1 -> 2 -> 3 -> 4 and you are given the third node wi
 
 void Main()
 {
-
+	var head = new ListNode(1);
+	head.next = new ListNode(2);
+	head.next.next = new ListNode(3);
+	
+	DeleteNode(head.next);
 }
 
 private static void DeleteNode(ListNode node)
