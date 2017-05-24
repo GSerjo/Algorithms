@@ -36,7 +36,7 @@ void Main()
 
 private static StringBuilder LevelOrder(TreeNode root)
 {
-	var byLevel = new List<IList<int>>();
+	var byLevel = new List<IList<string>>();
 	LevelOrder(root, 0, byLevel);
 	var result = new StringBuilder();
 	foreach (var level in byLevel)
@@ -46,22 +46,31 @@ private static StringBuilder LevelOrder(TreeNode root)
 	return result;	
 }
 
-private static void LevelOrder(TreeNode node, int level, List<IList<int>> result)
+private static void LevelOrder(TreeNode node, int level, List<IList<string>> result)
 {
+	if (level >= result.Count)
+	{
+		result.Add(new List<string>{ NodeToValue(node)});
+	}
+	else
+	{
+		result[level].Add(NodeToValue(node));
+	}
 	if (node == null)
 	{
 		return;
 	}
-	if (level >= result.Count)
-	{
-		result.Add(new List<int>{ node.val });
-	}
-	else
-	{
-		result[level].Add(node.val);
-	}
 	LevelOrder(node.left, level + 1, result);
 	LevelOrder(node.right, level + 1, result);
+}
+
+private static string NodeToValue(TreeNode node)
+{
+	if (node == null)
+	{
+		return "null";
+	}
+	return node.val.ToString();
 }
 
 public class TreeNode
