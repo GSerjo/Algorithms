@@ -3,42 +3,6 @@ import java.util.NoSuchElementException;
 
 public class Deque<Item> implements Iterable<Item> {
 
-    @Override
-    public Iterator<Item> iterator() {
-        return null;
-    }
-
-    private class DequeIterator implements Iterator<Item>{
-
-        Node current = head;
-
-        @Override
-        public boolean hasNext() {
-            return current != null;
-        }
-
-        @Override
-        public Item next() {
-            if(!hasNext()){
-                throw new NoSuchElementException();
-            }
-            Item result = current.value;
-            current = current.next;
-            return result;
-        }
-
-        @Override
-        public void remove() {
-            throw new UnsupportedOperationException();
-        }
-    }
-
-    private class Node {
-        public Item value;
-        public Node next;
-        public Node previous;
-    }
-
     private Node head;
     private Node tail;
     private int size;
@@ -59,13 +23,12 @@ public class Deque<Item> implements Iterable<Item> {
         if(item == null){
             throw new NullPointerException();
         }
-        Node node = new Node(){{
+
+        head = new Node(){{
             value = item;
             next = head;
             previous = null;
         }};
-
-        head = node;
         if(isEmpty()){
             tail = head;
         }
@@ -96,12 +59,11 @@ public class Deque<Item> implements Iterable<Item> {
         if(item == null){
             throw new NullPointerException();
         }
-        Node node = new Node(){{
+        tail = new Node(){{
            value = item;
            next = null;
            previous = tail;
         }};
-        tail = node;
         if(isEmpty()){
             head = tail;
         }
@@ -126,6 +88,42 @@ public class Deque<Item> implements Iterable<Item> {
             tail.next = null;
         }
         return result;
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return new DequeIterator();
+    }
+
+    private class DequeIterator implements Iterator<Item>{
+
+        Node current = head;
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public Item next() {
+            if(!hasNext()){
+                throw new NoSuchElementException();
+            }
+            Item result = current.value;
+            current = current.next;
+            return result;
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
+    private class Node {
+        Item value;
+        Node next;
+        Node previous;
     }
 
 }
