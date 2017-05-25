@@ -39,7 +39,7 @@ public class Deque<Item> {
             tail = head;
         }
         else {
-            node.next.previous = head;
+            head.next.previous = head;
         }
         size++;
     }
@@ -59,6 +59,42 @@ public class Deque<Item> {
             head.previous = null;
         }
         return  result;
+    }
+
+    public void addLast(Item item) {
+        if(item == null){
+            throw new NullPointerException();
+        }
+        Node node = new Node(){{
+           value = item;
+           next = null;
+           previous = tail;
+        }};
+        tail = node;
+        if(isEmpty()){
+            head = tail;
+        }
+        else{
+            tail.previous.next = tail;
+        }
+        size++;
+    }
+
+    public Item removeLast(){
+        if(isEmpty()){
+            throw new NoSuchElementException();
+        }
+        Item result = tail.value;
+        tail = tail.previous;
+        size--;
+        if(isEmpty()){
+            head = null;
+            tail = null;
+        }
+        else {
+            tail.next = null;
+        }
+        return result;
     }
 
 }
