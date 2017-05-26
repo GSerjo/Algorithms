@@ -96,6 +96,7 @@ AppPackages/
 [Bb]in
 [Oo]bj
 sql
+lib
 TestResults
 [Tt]est[Rr]esult*
 *.Cache
