@@ -19,7 +19,7 @@ public class Deque<Item> implements Iterable<Item> {
         return size == 0;
     }
 
-    public void addFirst(Item item) {
+    public void addFirst(final Item item) {
         if(item == null){
             throw new NullPointerException();
         }
@@ -55,7 +55,7 @@ public class Deque<Item> implements Iterable<Item> {
         return  result;
     }
 
-    public void addLast(Item item) {
+    public void addLast(final Item item) {
         if(item == null){
             throw new NullPointerException();
         }
@@ -90,7 +90,6 @@ public class Deque<Item> implements Iterable<Item> {
         return result;
     }
 
-    @Override
     public Iterator<Item> iterator() {
         return new DequeIterator();
     }
@@ -99,12 +98,10 @@ public class Deque<Item> implements Iterable<Item> {
 
         Node current = head;
 
-        @Override
         public boolean hasNext() {
             return current != null;
         }
 
-        @Override
         public Item next() {
             if(!hasNext()){
                 throw new NoSuchElementException();
@@ -114,7 +111,6 @@ public class Deque<Item> implements Iterable<Item> {
             return result;
         }
 
-        @Override
         public void remove() {
             throw new UnsupportedOperationException();
         }
