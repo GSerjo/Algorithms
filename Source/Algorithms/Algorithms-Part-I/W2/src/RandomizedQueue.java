@@ -35,8 +35,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             throw new NoSuchElementException();
         }
         int index = StdRandom.uniform(size);
-        swap(index, size - 1);
-        Item result = items[--size];
+        swap(index, --size);
+        Item result = items[size];
         items[size] = null;
         if(size > 0 && size == items.length/4){
             resize(items.length/2);
@@ -67,7 +67,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         items = newItems;
     }
 
-    @Override
     public Iterator<Item> iterator() {
         return new DequeIterator();
     }
@@ -84,12 +83,10 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             StdRandom.shuffle(indexes);
         }
 
-        @Override
         public boolean hasNext() {
             return sizeInternal > 0;
         }
 
-        @Override
         public Item next() {
             if(!hasNext()){
                 throw new NoSuchElementException();
@@ -97,7 +94,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             return items[indexes[--sizeInternal]];
         }
 
-        @Override
         public void remove() {
             throw new UnsupportedOperationException();
         }
