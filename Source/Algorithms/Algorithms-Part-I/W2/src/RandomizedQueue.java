@@ -76,7 +76,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         private int[] indexes = new int[size];
         private int sizeInternal = size;
 
-        public DequeIterator(){
+        DequeIterator(){
             for(int i = 0; i < size; i++){
                 indexes[i] = i;
             }
