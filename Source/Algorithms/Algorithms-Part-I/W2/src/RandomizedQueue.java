@@ -8,60 +8,56 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     private int size = 0;
     private Item[] items;
 
-    public RandomizedQueue(){
+    @SuppressWarnings("unchecked")
+    public RandomizedQueue() {
         items = (Item[]) new Object[2];
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return size == 0;
     }
 
-    public int size(){
-        return  size;
+    public int size() {
+        return size;
     }
 
-    public void enqueue(final Item item){
-        if(item == null){
+    public void enqueue(final Item item) {
+        if (item == null) {
             throw new NullPointerException();
         }
-        if(size == items.length){
+        if (size == items.length) {
             resize(size * 2);
         }
         items[size++] = item;
     }
 
-    public Item dequeue(){
-        if(isEmpty()){
+    public Item dequeue() {
+        if (isEmpty()) {
             throw new NoSuchElementException();
         }
         int index = StdRandom.uniform(size);
-        swap(index, --size);
-        Item result = items[size];
+        Item result = items[index];
+        items[index] = items[--size];
         items[size] = null;
-        if(size > 0 && size == items.length/4){
-            resize(items.length/2);
+        if (size > 0 && size == items.length / 4) {
+            resize(items.length / 2);
         }
         return result;
     }
 
-    public Item sample(){
-        if(isEmpty()){
+    public Item sample() {
+        if (isEmpty()) {
             throw new NoSuchElementException();
         }
         int index = StdRandom.uniform(size);
         return items[index];
     }
 
-    private void swap(int i,  int j){
-        Item temp = items[i];
-        items[i] = items[j];
-        items[j] = temp;
-    }
-
+    @SuppressWarnings("unchecked")
     private void resize(int newSize) {
         Item[] newItems = (Item[]) new Object[newSize];
 
-        for (int i = 0; i < items.length; i++){
+        for (int i = 0; i < items.length; i++) {
             newItems[i] = items[i];
         }
         items = newItems;
@@ -71,27 +67,32 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         return new DequeIterator();
     }
 
-    private class DequeIterator implements Iterator<Item>{
+    private class DequeIterator implements Iterator<Item> {
 
-        private int[] indexes = new int[size];
-        private int sizeInternal = size;
+        private final Item[] iterator;
+        private int index = 0;
 
-        DequeIterator(){
-            for(int i = 0; i < size; i++){
-                indexes[i] = i;
+        @SuppressWarnings("unchecked")
+        DequeIterator() {
+            iterator = (Item[]) new Object[size];
+            for (int i = 0; i < size; i++) {
+                iterator[i] = items[i];
             }
-            StdRandom.shuffle(indexes);
         }
 
         public boolean hasNext() {
-            return sizeInternal > 0;
+            return index < size;
         }
 
         public Item next() {
-            if(!hasNext()){
+            if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            return items[indexes[--sizeInternal]];
+            int i = StdRandom.uniform(size - index);
+            Item result = iterator[i];
+            iterator[i] = iterator[size - (++index)];
+            iterator[size - index] = null;
+            return result;
         }
 
         public void remove() {

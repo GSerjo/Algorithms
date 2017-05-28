@@ -1,17 +1,18 @@
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RandomizedQueueTest {
 
     @Test
-    public  void isEmpty(){
+    public void isEmpty() {
         RandomizedQueue<Integer> queue = new RandomizedQueue<>();
         assertEquals(0, queue.size());
         assertTrue(queue.isEmpty());
     }
 
     @Test
-    public void enqueue(){
+    public void enqueue() {
         RandomizedQueue<Integer> queue = new RandomizedQueue<>();
         queue.enqueue(5);
 
@@ -24,7 +25,7 @@ public class RandomizedQueueTest {
     }
 
     @Test
-    public void dequeue(){
+    public void dequeue() {
         RandomizedQueue<Integer> queue = new RandomizedQueue<>();
         queue.enqueue(4);
 
