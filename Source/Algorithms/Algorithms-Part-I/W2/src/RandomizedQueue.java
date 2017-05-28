@@ -68,27 +68,26 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     private class DequeIterator implements Iterator<Item> {
 
         private final Item[] iterator;
-        private int iterated = 0;
+        private int sizeIterator = size;
 
         DequeIterator() {
             iterator = (Item[]) new Object[size];
             for (int i = 0; i < size; i++) {
                 iterator[i] = items[i];
             }
+            StdRandom.shuffle(iterator);
         }
 
         public boolean hasNext() {
-            return iterated < size;
+            return sizeIterator > 0;
         }
 
         public Item next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            int index = StdRandom.uniform(size - iterated);
-            Item result = iterator[index];
-            iterator[index] = iterator[size - (++iterated)];
-            iterator[size - iterated] = null;
+            Item result = iterator[--sizeIterator];
+            iterator[sizeIterator] = null;
             return result;
         }
 
