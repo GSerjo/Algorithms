@@ -24,11 +24,7 @@ public class Deque<Item> implements Iterable<Item> {
             throw new NullPointerException();
         }
 
-        head = new Node() {{
-            value = item;
-            next = head;
-            previous = null;
-        }};
+        head = new Node(item, head, null);
         if (isEmpty()) {
             tail = head;
         } else {
@@ -48,6 +44,7 @@ public class Deque<Item> implements Iterable<Item> {
             head = null;
             tail = null;
         } else {
+            head.previous.next = null;
             head.previous = null;
         }
         return result;
@@ -57,11 +54,7 @@ public class Deque<Item> implements Iterable<Item> {
         if (item == null) {
             throw new NullPointerException();
         }
-        tail = new Node() {{
-            value = item;
-            next = null;
-            previous = tail;
-        }};
+        tail = new Node(item, null, tail);
         if (isEmpty()) {
             head = tail;
         } else {
@@ -81,6 +74,7 @@ public class Deque<Item> implements Iterable<Item> {
             head = null;
             tail = null;
         } else {
+            tail.next.previous = null;
             tail.next = null;
         }
         return result;
@@ -92,7 +86,7 @@ public class Deque<Item> implements Iterable<Item> {
 
     private class DequeIterator implements Iterator<Item> {
 
-        Node current = head;
+        private Node current = head;
 
         public boolean hasNext() {
             return current != null;
@@ -113,9 +107,15 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
     private class Node {
-        Item value;
-        Node next;
-        Node previous;
-    }
 
+        private Item value;
+        private Node next;
+        private Node previous;
+
+        public Node(final Item valueItem, final Node nextNode, final Node previousNode) {
+            value = valueItem;
+            next = nextNode;
+            previous = previousNode;
+        }
+    }
 }

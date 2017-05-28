@@ -8,7 +8,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     private int size = 0;
     private Item[] items;
 
-    @SuppressWarnings("unchecked")
     public RandomizedQueue() {
         items = (Item[]) new Object[2];
     }
@@ -53,7 +52,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         return items[index];
     }
 
-    @SuppressWarnings("unchecked")
     private void resize(int newSize) {
         Item[] newItems = (Item[]) new Object[newSize];
 
@@ -70,9 +68,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     private class DequeIterator implements Iterator<Item> {
 
         private final Item[] iterator;
-        private int index = 0;
+        private int iterated = 0;
 
-        @SuppressWarnings("unchecked")
         DequeIterator() {
             iterator = (Item[]) new Object[size];
             for (int i = 0; i < size; i++) {
@@ -81,17 +78,17 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         }
 
         public boolean hasNext() {
-            return index < size;
+            return iterated < size;
         }
 
         public Item next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            int i = StdRandom.uniform(size - index);
-            Item result = iterator[i];
-            iterator[i] = iterator[size - (++index)];
-            iterator[size - index] = null;
+            int index = StdRandom.uniform(size - iterated);
+            Item result = iterator[index];
+            iterator[index] = iterator[size - (++iterated)];
+            iterator[size - iterated] = null;
             return result;
         }
 

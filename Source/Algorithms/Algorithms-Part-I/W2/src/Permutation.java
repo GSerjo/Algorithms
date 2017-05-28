@@ -6,15 +6,18 @@ public class Permutation {
     public static void main(String[] args) {
 
         int k = Integer.parseInt(args[0]);
+        if (k == 0) {
+            return;
+        }
 
         RandomizedQueue<String> queue = new RandomizedQueue<>();
         for (int i = 1; !StdIn.isEmpty(); i++) {
-            String s = StdIn.readString();
+            String item = StdIn.readString();
             if (i <= k) {
-                queue.enqueue(s);
-            } else if (Math.random() < (double) k / i) {
+                queue.enqueue(item);
+            } else {
                 queue.dequeue();
-                queue.enqueue(s);
+                queue.enqueue(item);
             }
         }
 
