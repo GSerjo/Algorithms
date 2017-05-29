@@ -1,5 +1,6 @@
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.StdRandom;
 
 public class Permutation {
 
@@ -15,7 +16,7 @@ public class Permutation {
             String item = StdIn.readString();
             if (i <= k) {
                 queue.enqueue(item);
-            } else {
+            } else if ((double) k / i > StdRandom.uniform()) {
                 queue.dequeue();
                 queue.enqueue(item);
             }
