@@ -16,6 +16,7 @@ public class Point implements Comparable<Point> {
 
     private final int x;     // x-coordinate of this point
     private final int y;     // y-coordinate of this point
+    private final Comparator<Point>  bySlope = new BySlope();
 
     /**
      * Initializes a new point.
@@ -61,6 +62,16 @@ public class Point implements Comparable<Point> {
      */
     public double slopeTo(Point that) {
         /* YOUR CODE HERE */
+        if(x == that.x && y == that.y){
+            return Double.NEGATIVE_INFINITY;
+        }
+        if(y == that.y){
+            return 0;
+        }
+        if(x == that.x){
+            return  Double.POSITIVE_INFINITY;
+        }
+        return (that.y - y)/(that.x - x);
     }
 
     /**
@@ -77,6 +88,13 @@ public class Point implements Comparable<Point> {
      */
     public int compareTo(Point that) {
         /* YOUR CODE HERE */
+        if(x > that.x && y == that.y){
+            return 1;
+        }
+        if(y < that.y || (y == that.y && x < that.x)) {
+            return  -1;
+        }
+        return  1;
     }
 
     /**
@@ -87,6 +105,7 @@ public class Point implements Comparable<Point> {
      */
     public Comparator<Point> slopeOrder() {
         /* YOUR CODE HERE */
+        return bySlope;
     }
 
 
@@ -100,6 +119,21 @@ public class Point implements Comparable<Point> {
     public String toString() {
         /* DO NOT MODIFY */
         return "(" + x + ", " + y + ")";
+    }
+
+    private final class BySlope implements Comparator<Point> {
+
+        public int compare(Point point1, Point point2) {
+            double slope1 = slopeTo(point1);
+            double slope2 = slopeTo(point2);
+            if(slope1 < slope2){
+                return -1;
+            }
+            if(slope1 > slope2){
+                return 1;
+            }
+            return 0;
+        }
     }
 
     /**
