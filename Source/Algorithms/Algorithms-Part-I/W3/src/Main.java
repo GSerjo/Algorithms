@@ -19,7 +19,7 @@ public class Main {
 //        String[] input1 = new String[]{"1.11", "2.0.0", "1.2", "2", "0.1", "1.2.1", "1.1.1", "2.0"};
 //        answer(input);
 //        answer(input1);
-        
+
     }
 
 //    private static String[] answer(String[] input) {
