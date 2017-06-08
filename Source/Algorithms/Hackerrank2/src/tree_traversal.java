@@ -1,6 +1,4 @@
-/**
- * Created by Serjo on 05/06/2017.
- */
+
 public class tree_traversal {
 
 
@@ -47,11 +45,4 @@ public class tree_traversal {
         System.out.printf("%d ", root.data);
         inOrder(root.right);
     }
-}
-
-
-class Node {
-    int data;
-    Node left;
-    Node right;
 }
