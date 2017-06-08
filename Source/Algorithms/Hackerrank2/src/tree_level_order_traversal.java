@@ -38,4 +38,15 @@ public class tree_level_order_traversal {
 //        System.out.print(String.join(" ", result.stream().map(Object:: toString).collect(Collectors.toList())));
     }
 
+    private static int height(Node root){
+        return heightCore(root) - 1;
+    }
+
+    private static int heightCore(Node node){
+        if(node == null){
+            return 0;
+        }
+        return Math.max(heightCore(node.left), heightCore(node.right)) + 1;
+    }
+
 }
