@@ -84,34 +84,35 @@ public class KdTree {
         if (isEmpty()) {
             return null;
         }
-        return nearest(root, point, root.value, new double[]{Double.MAX_VALUE});
+        return nearest(root, point, root.value);
     }
 
-    private Point2D nearest(Node node, Point2D point, Point2D result, double[] distance) {
+    private Point2D nearest(Node node, Point2D point, Point2D result) {
         if (node == null) {
             return result;
         }
-        double currentDistance = point.distanceSquaredTo(node.value);
-        if (currentDistance < distance[0]) {
-            distance[0] = currentDistance;
+
+        double distance = result.distanceSquaredTo(point);
+        if (node.value.distanceSquaredTo(point) < distance) {
             result = node.value;
         }
-        if (node.rect.distanceSquaredTo(point) < distance[0]) {
+
+        if (node.rect.distanceSquaredTo(point) < distance) {
             if (node.x) {
                 if (point.x() < node.value.x()) {
-                    nearest(node.left, point, result, distance);
-                    nearest(node.right, point, result, distance);
+                    result = nearest(node.left, point, result);
+                    result = nearest(node.right, point, result);
                 } else {
-                    nearest(node.right, point, result, distance);
-                    nearest(node.left, point, result, distance);
+                    result = nearest(node.right, point, result);
+                    result = nearest(node.left, point, result);
                 }
             } else {
                 if (point.y() < node.value.y()) {
-                    nearest(node.left, point, result, distance);
-                    nearest(node.right, point, result, distance);
+                    result = nearest(node.left, point, result);
+                    result = nearest(node.right, point, result);
                 } else {
-                    nearest(node.right, point, result, distance);
-                    nearest(node.left, point, result, distance);
+                    result = nearest(node.right, point, result);
+                    result = nearest(node.left, point, result);
                 }
             }
         }

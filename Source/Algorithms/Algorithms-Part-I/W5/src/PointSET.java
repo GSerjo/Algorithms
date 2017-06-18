@@ -62,6 +62,8 @@ public class PointSET {
         if (set.isEmpty()) {
             return null;
         }
+
+
         double distance = Double.MAX_VALUE;
         Point2D result = null;
         for (Point2D item : set) {
