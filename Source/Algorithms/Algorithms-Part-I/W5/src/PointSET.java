@@ -1,11 +1,12 @@
 import edu.princeton.cs.algs4.Point2D;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.RectHV;
-import edu.princeton.cs.algs4.SET;
+
+import java.util.TreeSet;
 
 public class PointSET {
 
-    private SET<Point2D> set = new SET<>();
+    private TreeSet<Point2D> set = new TreeSet<>();
 
     public boolean isEmpty() {
         return set.isEmpty();

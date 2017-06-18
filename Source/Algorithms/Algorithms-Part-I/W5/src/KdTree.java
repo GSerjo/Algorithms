@@ -11,19 +11,26 @@ public class KdTree {
         return size == 0;
     }
 
+    public int size() {
+        return size;
+    }
+
+    public void draw() {
+
+    }
+
     public void insert(Point2D point) {
         if (point == null) {
             throw new NullPointerException();
         }
-        root = insert2(root, point);
-        size++;
+        root = insert(root, point);
     }
 
     public boolean contains(Point2D point) {
         if (point == null) {
             throw new NullPointerException();
         }
-        return contains2(root, point);
+        return contains(root, point);
     }
 
     public Iterable<Point2D> range(RectHV rect) {
@@ -112,34 +119,12 @@ public class KdTree {
         return result;
     }
 
-//    private boolean contains(Node root, Point2D point, int level) {
-//        if (root == null) {
-//            return false;
-//        }
-//        if (point.equals(root.value)) {
-//            return true;
-//        }
-//        if (isX(level)) {
-//            if (point.x() > root.value.x()) {
-//                return contains(root.right, point, level + 1);
-//            } else {
-//                return contains(root.left, point, level + 1);
-//            }
-//        } else {
-//            if (point.y() > root.value.y()) {
-//                return contains(root.right, point, level + 1);
-//            } else {
-//                return contains(root.left, point, level + 1);
-//            }
-//        }
-//    }
-
-    private boolean contains2(Node root, Point2D point) {
+    private boolean contains(Node root, Point2D point) {
         if (root == null) {
             return false;
         }
-        int level = 0;
         Node current = root;
+        boolean isX = true;
         while (true) {
             if (current == null) {
                 return false;
@@ -147,64 +132,43 @@ public class KdTree {
             if (point.equals(current.value)) {
                 return true;
             }
-            if (isX(level)) {
+            if (isX) {
                 current = point.x() > current.value.x() ? current.right : current.left;
             } else {
                 current = point.y() > current.value.y() ? current.right : current.left;
             }
-            level++;
+            isX = !isX;
         }
     }
 
-//    private Node insert(Node root, Point2D point, int level) {
-//        if (isEmpty() || root == null) {
-//            return new Node(point);
-//        }
-//        if (point.equals(root.value)) {
-//            return root;
-//        }
-//        if (isX(level)) {
-//            if (point.x() > root.value.x()) {
-//                root.right = insert(root.right, point, level + 1);
-//            } else {
-//                root.left = insert(root.left, point, level + 1);
-//            }
-//        } else {
-//            if (point.y() > root.value.y()) {
-//                root.right = insert(root.right, point, level + 1);
-//            } else {
-//                root.left = insert(root.left, point, level + 1);
-//            }
-//        }
-//        return root;
-//    }
-
-    private Node insert2(Node root, Point2D point) {
+    private Node insert(Node node, Point2D point) {
         double xmin = 0;
         double ymin = 0;
         double xmax = 1;
         double ymax = 1;
-        int level = 0;
-        if (root == null) {
+        if (node == null) {
+            size++;
             return new Node(point, new RectHV(xmin, ymin, xmax, ymax), true);
         }
-        Node current = root;
+        Node current = node;
         Node previous = null;
         boolean right = false;
+        boolean isX = true;
         while (true) {
             if (current == null) {
                 if (right) {
-                    previous.right = new Node(point, new RectHV(xmin, ymin, xmax, ymax), isX(level));
+                    previous.right = new Node(point, new RectHV(xmin, ymin, xmax, ymax), isX);
                 } else {
-                    previous.left = new Node(point, new RectHV(xmin, ymin, xmax, ymax), isX(level));
+                    previous.left = new Node(point, new RectHV(xmin, ymin, xmax, ymax), isX);
                 }
+                size++;
                 break;
             }
-            if (point.equals(current.value)) {
+            if (point.x() == current.value.x() && point.y() == current.value.y()) {
                 break;
             }
             previous = current;
-            if (isX(level)) {
+            if (isX) {
                 right = point.x() > current.value.x();
                 if (right) {
                     xmin = current.value.x();
@@ -213,24 +177,19 @@ public class KdTree {
                 }
                 current = right ? current.right : current.left;
             } else {
+                right = point.y() > current.value.y();
                 if (right) {
                     ymin = current.value.y();
                 } else {
                     ymax = current.value.y();
                 }
-                right = point.y() > current.value.y();
                 current = right ? current.right : current.left;
             }
-            level++;
+            isX = !isX;
         }
 
-        return root;
+        return node;
     }
-
-    private boolean isX(int level) {
-        return level % 2 == 0;
-    }
-
 
     private class Node {
         private Node left;
