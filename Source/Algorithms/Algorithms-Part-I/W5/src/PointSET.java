@@ -64,7 +64,7 @@ public class PointSET {
         double distance = Double.MAX_VALUE;
         Point2D result = null;
         for (Point2D item : set) {
-            double newDistance = point.distanceTo(item);
+            double newDistance = point.distanceSquaredTo(item);
             if (newDistance < distance) {
                 distance = newDistance;
                 result = item;
