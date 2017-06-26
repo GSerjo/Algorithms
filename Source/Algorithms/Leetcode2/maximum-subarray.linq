@@ -3,6 +3,23 @@
 void Main()
 {
 	maxSubArray(new[] {-2,1,-3,4,-1,2,1,-5,4}).Dump();
+	maxSubArray1(new[] {-2,1,-3,4,-1,2,1,-5,4}).Dump();
+}
+
+public int maxSubArray1(int[] nums)
+{
+	int length = nums.Length;
+	int[] result = new int[length];
+	result[0] = nums[0];
+	int max = result[0];
+
+	for (int i = 1; i < length; i++)
+	{
+		result[i] = nums[i] + (result[i - 1] > 0 ? result[i - 1] : 0);
+		max = Math.Max(max, result[i]);
+	}
+
+	return max;
 }
 
 private static int maxSubArray(int[] nums)
