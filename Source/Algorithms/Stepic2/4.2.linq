@@ -2,7 +2,23 @@
 
 void Main()
 {
-	Huffman("abacabad");
+	var input = "abacabad";
+	
+	//var input = Console.ReadLine();
+	
+	var letters = Huffman(input);
+	var code = new StringBuilder();
+	
+	foreach (var item in input)
+	{
+		code.Append(letters[item].Code);
+	}
+	Console.WriteLine("{0} {1}", letters.Count, code.Length);
+	foreach (var item in letters.Values.OrderBy(x=>x.Key))
+	{
+		Console.WriteLine("{0}: {1}", item.Key, item.Code); 
+	}
+	Console.WriteLine(code.ToString());
 }
 
 private static Dictionary<char, Letter> Huffman(string word)
@@ -32,29 +48,49 @@ private static Dictionary<char, Letter> Huffman(string word)
 		return letters;
 	}
 	
-	CreateTree(letters);
+	var tree = CreateTree(letters);
+	UpdateCodeHuffman(tree, letters, string.Empty);
 	
-	return new Dictionary<char, Letter>();
+	return letters;
 }
 
-private static Node CreateTree(Dictionary<char, Letter> letters)
+private static void UpdateCodeHuffman(Letter node, Dictionary<char, Letter> letters, string code)
 {
-	var list = new MinHeap();
+	if(node == null)
+	{
+		return;
+	}
+	if(node.Left == null && node.Right == null)
+	{
+		letters[node.Key].Code = code;
+	}
+	UpdateCodeHuffman(node.Left, letters, code + "0");
+	UpdateCodeHuffman(node.Right, letters, code + "1");
+}
+
+private static Letter CreateTree(Dictionary<char, Letter> letters)
+{
+	var heap = new MinHeap();
 	foreach (var item in letters)
 	{
-		list.Insert(item.Value);
+		heap.Insert(item.Value);
 	}
-	return new Node();
 	
-//	while(list.Size != 0)
-//	{
-//	}
-}
-
-private class Node
-{
-	public Letter Left;
-	public Letter Right;
+	while(heap.Size != 1)
+	{
+		var item1 = heap.Remove();
+		var item2 = heap.Remove();
+		
+		var node = new Letter
+		{
+			Left = item1,
+			Right = item2,
+			Count = item1.Count + item2.Count
+		};
+		heap.Insert(node);
+	}
+	var result = heap.Remove();
+	return result;
 }
 
 private class Letter
@@ -62,6 +98,9 @@ private class Letter
 	public char Key;
 	public int Count;
 	public string Code;
+
+	public Letter Left;
+	public Letter Right;
 }
 
 private class MinHeap
