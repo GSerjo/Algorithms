@@ -3,63 +3,126 @@
 void Main()
 {
 	//var number = int.Parse(Console.ReadLine());
-	var number = 96234;
+	var number = 5;
 	
 	var result = Sequence(number);
 	
-	//Console.WriteLine(result.Count - 1);
+	Console.WriteLine(result.Count - 1);
 	Console.WriteLine(string.Join(" ", result));
 }
 
-private Dictionary<int, int> _cache = new Dictionary<int, int>();
 
-private int Sequence(int value)
+
+private static List<int> Sequence(int target)
 {
-	var count = Count(value);
-	if (count.HasValue)
+	if (target == 1)
 	{
-		return count.Value;
+		return new List<int> {1};
 	}
+
+	var cache = new Dictionary<int, int>{{target, 0}};
 	
-	if (value == 1)
+	for (int i = target - 1; i > 0; i--)
 	{
-		return 0;
+		int x1 = int.MaxValue;
+		int x2 = int.MaxValue;
+		int x3 = int.MaxValue;
+
+		var i3 = i * 3;
+		
+		if (i3 <= target)
+		{
+			if (i3 == target)
+			{
+				cache[i] = 1;
+				continue;
+			}
+			else
+			{
+				x3 = cache[i3];
+			}
+		}
+		
+		var i2 = i*2;
+
+		if (i2 <= target)
+		{
+			if (i2 == target)
+			{
+				cache[i] = 1;
+				continue;
+			}
+			else
+			{
+				x2 = cache[i2];
+			}
+		}
+
+		var i1 = i + 1;
+		if (i1 <= target)
+		{
+			if (i1 == target)
+			{
+				cache[i] = 1;
+				continue;
+			}
+			else
+			{
+				x1 = cache[i1];
+			}
+		}
+		var minDummy = Math.Min(x1, x2);
+		var min = Math.Min(minDummy, x3);
+		
+		cache[i] = min + 1;
 	}
-	if (value % 3 == 0)
-	{
-		var result = Sequence(value/3) + 1;
-		UpdateCache(value, result);
-	}
-	if ((value - 1) % 3 == 0)
-	{
-		var result = Sequence(value - 1) + 1;
-		UpdateCache(value, result);
-	}
-	if (value % 2 == 0)
-	{
-		var result = Sequence(value / 2) + 1;
-		UpdateCache(value, result);
-	}
-	return Sequence(value - 1) + 1;
+	var result = RestoreSequence(cache, target);
+	return result;
 }
 
-private int? Count(int key)
+private static List<int> RestoreSequence(Dictionary<int, int> cache, int target)
 {
-	if (_cache.ContainsKey(key))
+	var value = 1;
+	var result = new List<int>();
+	
+	while (true)
 	{
-		return _cache[key];
+		int x1 = int.MaxValue;
+		int x2 = int.MaxValue;
+		int x3 = int.MaxValue;
+
+		result.Add(value);
+
+		if (value == target)
+		{
+			break;
+		}
+		
+		var i1 = value + 1;
+		var i2 = value * 2;
+		var i3 = value * 3;
+		
+		x1 = cache[i1];
+		
+		if(i2 <= target)
+			x2 = cache[i2];
+			
+		if(i3 <= target)
+			x3 = cache[i3];
+
+
+		var minDummy = Math.Min(x1, x2);
+		if (minDummy > x3)
+			value = i3;
+		else
+		{
+			if (x1 < x2)
+				value = i1;
+			else
+				value = i2;
+		}
 	}
-	return null;
+	return result;
 }
 
-private void UpdateCache(int key, int value)
-{
-	if (_cache.ContainsKey(key))
-	{
-		_cache[key] = Math.Min(_cache[key], value);
-	}
-	else
-	{
-		_cache[key] = value;
-	}
-}
+
