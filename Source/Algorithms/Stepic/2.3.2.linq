@@ -9,8 +9,8 @@ void Main()
 	
 	var processorCount = int.Parse(numbers.Split(' ')[0]);
 	
-	var items = lines[1].Split(' ').Select(int.Parse).ToList();
-	//var items = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
+	var items = lines[1].Split(' ').Select(long.Parse).ToList();
+	//var items = Console.ReadLine().Split(' ').Select(long.Parse).ToList();
 	
 	var processors = new MinHeap();
 	for (int i = 0; i < processorCount; i++)
@@ -30,7 +30,7 @@ void Main()
 
 private class Processor
 {
-	public int Time { get; private set; }
+	public long Time { get; private set; }
 	public int Id { get; set; }
 	
 	public Task Process(Task task)
@@ -46,14 +46,6 @@ private class MinHeap
 {
 	private Processor[] _items = new Processor[2];
 	private int _size = 0;
-
-	public int Size
-	{
-		get
-		{
-			return _size;
-		}
-	}
 
 	public void Insert(Processor processor)
 	{
@@ -130,7 +122,7 @@ private class MinHeap
 
 private class Task
 {
-	public int Time { get; set; }
-	public int Start { get; set; }
+	public long Time { get; set; }
+	public long Start { get; set; }
 	public int ProcessorId { get; set; }
 }
