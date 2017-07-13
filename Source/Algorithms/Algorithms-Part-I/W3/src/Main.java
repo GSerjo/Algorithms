@@ -19,7 +19,32 @@ public class Main {
 //        String[] input1 = new String[]{"1.11", "2.0.0", "1.2", "2", "0.1", "1.2.1", "1.1.1", "2.0"};
 //        answer(input);
 //        answer(input1);
+        System.out.println(answer(5));
+        System.out.println(answer(200));
+    }
 
+
+    public static int answer(int n) {
+        int maxN = n + 1;
+
+        int[][] matrix = new int[maxN][maxN];
+        matrix[1][1] = 1;
+        matrix[2][2] = 1;
+
+        for (int i = 3; i < maxN; i++) {
+            for (int j = 1; j <= i; j++) {
+                if (i - j == 0) {
+                    matrix[i][j] = 1 + matrix[i][j - 1];
+                } else if (i - j > j) {
+                    matrix[i][j] = matrix[i - j][j - 1] + matrix[i][j - 1];
+                } else if (i - j < j) {
+                    matrix[i][j] = matrix[i - j][i - j] + matrix[i][j - 1];
+                } else if (i - j == j) {
+                    matrix[i][j] = matrix[j][j - 1] + matrix[i][j - 1];
+                }
+            }
+        }
+        return matrix[n][n] - 1;
     }
 
 //    private static String[] answer(String[] input) {
@@ -213,3 +238,4 @@ public class Main {
 //        return result.toString();
 //    }
 }
+
