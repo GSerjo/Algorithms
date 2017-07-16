@@ -1,9 +1,3 @@
-//import java.math.BigInteger;
-//import java.util.HashMap;
-//import java.util.Map;
-
-import edu.princeton.cs.algs4.StdOut;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -35,25 +29,8 @@ public class Main {
 //        System.out.println(answer("4"));
 //        System.out.println(answer("15"));
 
-        double[][] d = {{2, 5, 7}, {6, 3, 4}, {5, -2, -3}};
-//        Matrix matrix = new Matrix(d);
-        //matrix.show();
 
-        //matrix.solve().show();
-
-        Fraction fraction = new Fraction(1, 2);
-
-//        print(invertMatrix(d));
-
-        int[][] d1 = {{2, 5, 7}, {6, 3, 4}, {5, -2, -3}};
-
-        Fraction[][] d2 = convert(d1);
-        Fraction[][] d3 = invertMatrix(d2);
-
-//        print(d3);
-
-
-//        int[][] t = {{0, 1, 0, 0, 0, 1}, {4, 0, 0, 3, 2, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}};
+        int[][] t = {{0, 1, 0, 0, 0, 1}, {4, 0, 0, 3, 2, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}};
 
 
         int[] result = answer(t);
