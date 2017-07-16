@@ -223,19 +223,6 @@ public class Main {
         return result;
     }
 
-    private static Fraction[][] convert(int[][] data) {
-
-        Fraction[][] result = new Fraction[data.length][data.length];
-
-        for (int i = 0; i < data.length; i++) {
-            for (int j = 0; j < data.length; j++) {
-                result[i][j] = new Fraction(data[i][j], 1);
-            }
-        }
-        return result;
-    }
-
-
     private static boolean isTerminal(int[] data) {
         for (int i = 0; i < data.length; i++) {
             if (data[i] != 0) {
