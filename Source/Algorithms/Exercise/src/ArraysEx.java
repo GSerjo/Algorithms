@@ -4,12 +4,37 @@ public class ArraysEx {
 
     public static void main(String[] args) {
 
-        System.out.println(isPermutation("tes", "set"));
 
+        System.out.println(compress("aabccccca"));
+
+        System.out.println(isPermutation("tes", "set"));
 
         System.out.println(isUniqueChar("tes"));
     }
 
+    private static String compress(String value) {
+        if (value == null || value.length() <= 1) {
+            return value;
+        }
+        StringBuilder result = new StringBuilder();
+
+        int count = 1;
+        for (int i = 1; i < value.length(); i++) {
+            if (value.charAt(i) == value.charAt(i - 1)) {
+                count++;
+            } else {
+                result.append(value.charAt(i - 1));
+                result.append(count);
+                count = 1;
+            }
+        }
+        result.append(value.charAt(value.length() - 1));
+        result.append(count);
+        if (result.toString().length() > value.length()) {
+            return value;
+        }
+        return result.toString();
+    }
 
     private static boolean isPermutation(String a, String b) {
         if (a == null || b == null || a.length() != b.length()) {
