@@ -7,24 +7,36 @@ void Main()
 	LengthOfLongestSubstringKDistinct("cccdaba", 3).Dump();
 }
 
-private static int LengthOfLongestSubstringKDistinct(string s, int k)
+
+public int LengthOfLongestSubstringKDistinct(string s, int k)
 {
-	int[] count = new int[256];
-	int dummy = 0;
-	var i = 0;
-	var result = 0;
-	for (int j = 0; j < s.Length; j++)
+	var cache = new Dictionary<char, int>();
+	int left = 0;
+	int result = 0;
+	for (int i = 0; i < s.Length; i++)
 	{
-		if (count[s[j]]++ == 0)
+		if (cache.ContainsKey(s[i]))
 		{
-			dummy++;
+			cache[s[i]]++;
 		}
-		if (dummy > k)
+		else
 		{
-			while (--count[s[i++]] > 0);
-			dummy--;
+			cache[s[i]] = 1;
 		}
-		result = Math.Max(result, j - i + 1);
+		while (cache.Count > k)
+		{
+			char leftChar = s[left];
+			if (cache.ContainsKey(leftChar))
+			{
+				cache[leftChar]--;
+				if (cache[leftChar] == 0)
+				{
+					cache.Remove(leftChar);
+				}
+			}
+			left++;
+		}
+		result = Math.Max(result, i - left + 1);
 	}
 	return result;
 }
